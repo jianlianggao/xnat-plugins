@@ -1,4 +1,4 @@
-package uk.ac.ic.doc.biomedia.plugins.userattributes.entities;
+package uk.ac.ic.doc.biomedia.plugins.userterms.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 
@@ -8,7 +8,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "authUser"), @UniqueConstraint(columnNames = {"hasAcceptedTerms"})})
-public class UserAttributes extends AbstractHibernateEntity {
+public class UserTerms extends AbstractHibernateEntity {
     public String getAuthUser() {
         return _authUser;
     }
