@@ -173,10 +173,11 @@ dependencies {
         exclude group: '*'
     }
     compile("org.nrg.xdat:core:${vXnat}") {
-        exclude group: '*'
+        //exclude group: '*'
     }
     compile "org.nrg:prefs:${vXnat}"
     compile "org.nrg:framework:${vXnat}"
+    //compile "org.nrg:xdat:1.7.1-SNAPSHOT"
 
     compile "org.reflections:reflections:0.9.10"
     compile "javax.servlet:javax.servlet-api:3.1.0"
