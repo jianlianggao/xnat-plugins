@@ -1,2 +1,2 @@
-UserTerms/build
-UserTerms/.gradle
+*/build
+*/.gradle
