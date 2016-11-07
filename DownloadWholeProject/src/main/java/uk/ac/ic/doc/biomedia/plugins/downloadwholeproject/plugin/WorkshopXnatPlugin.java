@@ -11,8 +11,8 @@ package uk.ac.ic.doc.biomedia.plugins.downloadwholeproject.plugin;
 
 import org.nrg.framework.annotations.XnatDataModel;
 import org.nrg.framework.annotations.XnatPlugin;
-import uk.ac.ic.doc.biomedia.plugins.downloadwholeproject.xdat.bean.WorkshopBiosamplecollectionBean;
-import uk.ac.ic.doc.biomedia.plugins.downloadwholeproject.xdat.bean.RadRadiologyreaddataBean;
+import org.nrg.xdat.bean.WorkshopBiosamplecollectionBean;
+import org.nrg.xdat.bean.RadRadiologyreaddataBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
