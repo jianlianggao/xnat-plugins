@@ -1,0 +1,256 @@
+def pluginVersion = '1.0.0-SNAPSHOT'
+
+group 'uk.ac.ic.doc.biomedia'
+version pluginVersion
+
+def vXnat = '1.7.1-SNAPSHOT'
+def vXnatStable = '1.7.0'
+def vSpring = '4.2.5.RELEASE'
+def vSpringSecurity = '4.0.4.RELEASE'
+def vSwagger = '2.3.1'
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'idea'
+apply plugin: 'xnat-data-builder'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+        maven {
+            url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-release'
+            name 'XNAT Release Repository'
+        }
+        maven {
+            url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-snapshot'
+            name 'XNAT Snapshot Repository'
+        }
+    }
+    dependencies {
+        classpath "org.nrg.xnat.build:xnat-data-builder:1.7.0-SNAPSHOT"
+    }
+    configurations {
+        all*.exclude group: 'avalon-framework'
+        all*.exclude group: 'avalon-logkit'
+        all*.exclude group: 'com.metaparadigm'
+        all*.exclude group: 'com.sun.mail'
+        all*.exclude group: 'excalibur-component'
+        all*.exclude group: 'excalibur-instrument'
+        all*.exclude group: 'excalibur-logger'
+        all*.exclude group: 'excalibur-pool'
+        all*.exclude group: 'fop'
+        all*.exclude group: 'geronimo-spec'
+        all*.exclude group: 'hsqldb'
+        all*.exclude group: 'imagej'
+        all*.exclude group: 'jamon'
+        all*.exclude group: 'jakarta-regexp'
+        all*.exclude group: 'org.apache.geronimo.specs'
+        all*.exclude group: 'velocity'
+        all*.exclude group: 'xmlrpc'
+        all*.exclude group: 'ant', module: 'ant'
+        all*.exclude group: 'commons-email', module: 'commons-email'
+        all*.exclude group: 'edu.ucar', module: 'netcdf'
+        all*.exclude group: 'javax.jms', module: 'jms'
+        all*.exclude group: 'javax.mail', module: 'mail'
+        all*.exclude group: 'javax.servlet', module: 'servlet-api'
+        all*.exclude group: 'javax.sql', module: 'jdbc-stdext'
+        all*.exclude group: 'javax.transaction', module: 'jta'
+        all*.exclude group: 'jdbc', module: 'jdbc'
+        all*.exclude group: 'jms', module: 'jms'
+        all*.exclude group: 'jython', module: 'jython'
+        all*.exclude group: 'org.nrg', module: 'nrg'
+        all*.exclude group: 'net.sf.saxon', module: 'saxon'
+        all*.exclude group: 'stax', module: 'stax-api'
+        all*.exclude group: 'xml-apis', module: 'xml-apis'
+        all*.exclude module: 'commons-beanutils-core'
+        all*.exclude module: 'log4j-slf4j-impl'
+        all*.exclude module: 'pipelineCNDAXNAT'
+        all*.exclude module: 'slf4j-simple'
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-release'
+        name 'XNAT Release Repository'
+    }
+    maven {
+        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/libs-snapshot'
+        name 'XNAT Snapshot Repository'
+    }
+    maven {
+        url 'https://nrgxnat.artifactoryonline.com/nrgxnat/ext-release'
+        name 'XNAT External Release Repository'
+    }
+    mavenCentral()
+    jcenter()
+}
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+if (hasProperty("rt.17.jar")) {
+    // Solution for bootstrap classpath warning and possible issues with compatibility with 1.7 libraries
+    // was taken from this post on discuss.gradle.org: http://bit.ly/24xD9j0
+    def rt17jar = getProperty("rt.17.jar")
+    logger.info "Using ${rt17jar} as the bootstrap class path jar."
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.fork = true
+            options.compilerArgs << "-XDignore.symbol.file"
+            options.bootClasspath = rt17jar
+        }
+    }
+} else {
+    logger.warn "No value was set for the rt.17.jar build property, using the default bootstrap class path. You should consider setting rt.17.jar to indicate a jar file containing the Java 1.7 run-time library:\n"
+    logger.warn "  ./gradlew -Prt.17.jar=rt-1.7.0_45.jar war\n"
+}
+
+compileJava {
+    options.fork = false
+}
+
+configurations {
+    all*.exclude group: 'avalon-framework'
+    all*.exclude group: 'avalon-logkit'
+    all*.exclude group: 'com.metaparadigm'
+    all*.exclude group: 'com.sun.mail'
+    all*.exclude group: 'excalibur-component'
+    all*.exclude group: 'excalibur-instrument'
+    all*.exclude group: 'excalibur-logger'
+    all*.exclude group: 'excalibur-pool'
+    all*.exclude group: 'fop'
+    all*.exclude group: 'geronimo-spec'
+    all*.exclude group: 'hsqldb'
+    all*.exclude group: 'imagej'
+    all*.exclude group: 'jamon'
+    all*.exclude group: 'jakarta-regexp'
+    all*.exclude group: 'org.apache.geronimo.specs'
+    all*.exclude group: 'velocity'
+    all*.exclude group: 'xmlrpc'
+    all*.exclude group: 'ant', module: 'ant'
+    all*.exclude group: 'commons-email', module: 'commons-email'
+    all*.exclude group: 'edu.ucar', module: 'netcdf'
+    all*.exclude group: 'javax.jms', module: 'jms'
+    all*.exclude group: 'javax.mail', module: 'mail'
+    all*.exclude group: 'javax.servlet', module: 'servlet-api'
+    all*.exclude group: 'javax.sql', module: 'jdbc-stdext'
+    all*.exclude group: 'javax.transaction', module: 'jta'
+    all*.exclude group: 'jdbc', module: 'jdbc'
+    all*.exclude group: 'jms', module: 'jms'
+    all*.exclude group: 'jython', module: 'jython'
+    all*.exclude group: 'org.nrg', module: 'nrg'
+    all*.exclude group: 'net.sf.saxon', module: 'saxon'
+    all*.exclude group: 'stax', module: 'stax-api'
+    all*.exclude group: 'xml-apis', module: 'xml-apis'
+    all*.exclude module: 'commons-beanutils-core'
+    all*.exclude module: 'log4j-slf4j-impl'
+    all*.exclude module: 'pipelineCNDAXNAT'
+    all*.exclude module: 'slf4j-simple'
+}
+
+dependencies {
+    compile("org.nrg.xnat:web:${vXnat}") {
+        //transitive = false
+    }
+
+    compile "org.nrg.xnat:spawner:${vXnat}"
+    compile("org.nrg.xnat:xnat-data-models:${vXnat}") {
+        //transitive = false
+    }
+
+    compile "org.nrg:framework:${vXnat}"
+
+    compile "org.springframework:spring-aop:${vSpring}"
+    compile "org.springframework:spring-beans:${vSpring}"
+    compile "org.springframework:spring-context-support:${vSpring}"
+    compile "org.springframework:spring-context:${vSpring}"
+    compile "org.springframework:spring-core:${vSpring}"
+    compile "org.springframework:spring-jdbc:${vSpring}"
+    compile "org.springframework:spring-jms:${vSpring}"
+    compile "org.springframework:spring-messaging:${vSpring}"
+    compile "org.springframework:spring-orm:${vSpring}"
+    compile "org.springframework:spring-oxm:${vSpring}"
+    compile "org.springframework:spring-tx:${vSpring}"
+    compile "org.springframework:spring-web:${vSpring}"
+    compile "org.springframework:spring-webmvc:${vSpring}"
+
+    compile "io.springfox:springfox-swagger2:${vSwagger}"
+    compile "io.springfox:springfox-swagger-ui:${vSwagger}"
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', 'XNAT Workshop 2016 Plugin')
+                root.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
+                root.appendNode('inceptionYear', '2016')
+
+                def scm = root.appendNode('scm')
+                scm.appendNode('url', 'https://github.com/XnatWorkshop/xnat-workshop-plugin')
+                scm.appendNode('connection', 'scm:https://github.com/XnatWorkshop/xnat-workshop-plugin.git')
+                scm.appendNode('developerConnection', 'scm:git://github.com/XnatWorkshop/xnat-workshop-plugin.git')
+
+                def license = root.appendNode('licenses').appendNode('license')
+                license.appendNode('name', 'Simplified BSD 2-Clause License')
+                license.appendNode('url', 'http://xnat.org/about/license.php')
+                license.appendNode('distribution', 'repo')
+
+                def developers = root.appendNode('developers')
+
+                def tolsen = developers.appendNode('developer')
+                tolsen.appendNode('id', 'timolsen23')
+                tolsen.appendNode('name', 'Tim Olsen')
+                tolsen.appendNode('email', 'tim@deck5consulting.com')
+            }
+        }
+    }
+}
+
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/beans/java'
+            srcDir 'src/generated/java'
+            srcDir 'src/main/java'
+        }
+        resources {
+            srcDir 'src/beans/resources'
+            srcDir 'src/generated/resources'
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+clean {
+    delete 'src/beans'
+    delete 'src/generated'
+}
+
+task beanJar(type: Jar) {
+    baseName = "${project.name}-beans"
+    from(sourceSets.main.output) {
+        include "org/nrg/xdat/bean/**"
+        include "org/nrg/xdat/model/**"
+    }
+}
+
+
+task mainJar(type: Jar) {
+    baseName = "${project.name}-plugin"
+    from sourceSets.main.output
+}
+
+artifacts {
+    archives mainJar
+    archives beanJar
+}
