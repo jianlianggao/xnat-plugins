@@ -1,3 +1,24 @@
+$page.setTitle("UserTerms")
+$page.setLinkColor($ui.alink)
+$page.setVlinkColor($ui.vlink)
+<script type="text/javascript">
+    window.currentID="$!om.getId()";
+        #if($om.getProject())
+            #if($om.getProject().equals(""))
+            window.currentProject="$!project";
+            #else
+            window.currentProject="$!om.getProject()";
+            #end
+        #else
+        window.currentProject="$!project";
+        #end
+
+    window.currentSubject="$!om.getSubjectId()";
+    window.currentLabel="$!om.getLabel()";
+</script>
+#if ($data.message)
+<div class="error">$data.message</div>
+#end
 <form ID="userTermsAcceptanceForm" name="userTermsAcceptanceForm" method="post" action="$link.setAction("AcceptTerms")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">

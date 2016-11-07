@@ -1,3 +1,4 @@
+/*
 package uk.ac.ic.doc.biomedia.plugins.userterms.rest;
 
 import io.swagger.annotations.Api;
@@ -94,3 +95,4 @@ public class UserTermsRestController extends AbstractXapiRestController {
     @Autowired
     private UserTermsService _service;
 }
+*/
