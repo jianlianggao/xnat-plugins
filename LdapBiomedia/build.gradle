@@ -1,4 +1,4 @@
-def pluginVersion = '1.0.0-SNAPSHOT'
+def pluginVersion = '1.0.0'
 
 group 'org.nrg.xnat.workshop'
 version pluginVersion
