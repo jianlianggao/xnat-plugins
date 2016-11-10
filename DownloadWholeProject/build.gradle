@@ -291,6 +291,11 @@ task mainJar(type: Jar) {
     from sourceSets.main.output
 }
 
+task deployToPluginsFolder(type: Copy, dependsOn: jar) {
+    from jar.archivePath
+    into "/data/xnat/home/plugins"
+}
+
 artifacts {
     archives mainJar
     archives beanJar
