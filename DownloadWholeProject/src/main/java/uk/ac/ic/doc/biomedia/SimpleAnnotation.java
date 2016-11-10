@@ -7,7 +7,7 @@
  * Released under the Simplified BSD.
  */
 
-package uk.ac.ic.doc.biomedia.plugins.userterms;
+package uk.ac.ic.doc.biomedia;
 
 public @interface SimpleAnnotation {
     int value() default 0;

@@ -1,0 +1,8 @@
+<!-- Sequence: 6 -->
+
+
+<li class="yuimenuitem">
+    <a class="yuimenuitemlabel"
+       href="$link.setPage('XDATScreen_edit_biomedia_userTerms.vm')">Accept User Terms</a>
+</li>
+
