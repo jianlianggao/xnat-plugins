@@ -1,7 +1,7 @@
-package uk.ac.ic.doc.biomedia.plugins.userterms.services;
+package uk.ac.ic.doc.biomedia.services;
 
 import org.nrg.framework.orm.hibernate.BaseHibernateService;
-import uk.ac.ic.doc.biomedia.plugins.userterms.entities.UserTerms;
+import uk.ac.ic.doc.biomedia.entities.UserTerms;
 
 public interface UserTermsService extends BaseHibernateService<UserTerms> {
     /**

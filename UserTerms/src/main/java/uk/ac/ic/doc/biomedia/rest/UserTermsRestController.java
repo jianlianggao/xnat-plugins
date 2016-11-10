@@ -1,5 +1,4 @@
-/*
-package uk.ac.ic.doc.biomedia.plugins.userterms.rest;
+package uk.ac.ic.doc.biomedia.rest;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -8,8 +7,8 @@ import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
 import org.nrg.xdat.security.services.RoleHolder;
 import org.nrg.xdat.security.services.UserManagementServiceI;
-import uk.ac.ic.doc.biomedia.plugins.userterms.entities.UserTerms;
-import uk.ac.ic.doc.biomedia.plugins.userterms.services.UserTermsService;
+import uk.ac.ic.doc.biomedia.entities.UserTerms;
+import uk.ac.ic.doc.biomedia.services.UserTermsService;
 import org.nrg.xdat.rest.AbstractXapiRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -95,4 +94,3 @@ public class UserTermsRestController extends AbstractXapiRestController {
     @Autowired
     private UserTermsService _service;
 }
-*/

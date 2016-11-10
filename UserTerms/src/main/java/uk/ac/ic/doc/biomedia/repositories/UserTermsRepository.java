@@ -1,7 +1,7 @@
-package uk.ac.ic.doc.biomedia.plugins.userterms.repositories;
+package uk.ac.ic.doc.biomedia.repositories;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateDAO;
-import uk.ac.ic.doc.biomedia.plugins.userterms.entities.UserTerms;
+import uk.ac.ic.doc.biomedia.entities.UserTerms;
 import org.springframework.stereotype.Repository;
 
 @Repository
