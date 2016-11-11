@@ -1,4 +1,4 @@
-package uk.ac.imperial.xnat.workshop;
+package uk.ac.ic.doc.biomedia;
 
 import org.nrg.framework.annotations.XnatPlugin;
 /**
