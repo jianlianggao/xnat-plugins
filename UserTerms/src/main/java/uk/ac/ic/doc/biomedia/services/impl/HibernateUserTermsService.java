@@ -1,18 +1,22 @@
-package uk.ac.ic.doc.biomedia.plugins.userterms.services.impl;
+package uk.ac.ic.doc.biomedia.services.impl;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntityService;
-import uk.ac.ic.doc.biomedia.plugins.userterms.entities.UserTerms;
-import uk.ac.ic.doc.biomedia.plugins.userterms.repositories.UserTermsRepository;
+import uk.ac.ic.doc.biomedia.entities.UserTerms;
+import uk.ac.ic.doc.biomedia.repositories.UserTermsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uk.ac.ic.doc.biomedia.plugins.userterms.services.UserTermsService;
+import uk.ac.ic.doc.biomedia.services.UserTermsService;
 
 import javax.inject.Inject;
 import java.util.List;
 
 @Service
 public class HibernateUserTermsService extends AbstractHibernateEntityService<UserTerms, UserTermsRepository> implements UserTermsService {
+
+    @Inject
+    private UserTermsRepository _dao;
+
     /**
      * {@inheritDoc}
      */
@@ -35,6 +39,4 @@ public class HibernateUserTermsService extends AbstractHibernateEntityService<Us
         return attributes.get(0);
     }
 
-    @Inject
-    private UserTermsRepository _dao;
 }

@@ -5,11 +5,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
-import org.nrg.xdat.security.services.RoleHolder;
-import org.nrg.xdat.security.services.UserManagementServiceI;
 import uk.ac.ic.doc.biomedia.entities.UserTerms;
 import uk.ac.ic.doc.biomedia.services.UserTermsService;
-import org.nrg.xdat.rest.AbstractXapiRestController;
+import org.nrg.framework.annotations.XapiRestController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,10 +22,19 @@ import java.util.List;
 @Api(description = "XNAT User Additional Attributes API")
 @XapiRestController
 @RequestMapping(value = "/attributes")
-public class UserTermsRestController extends AbstractXapiRestController {
-    protected UserTermsRestController(UserManagementServiceI userManagementService, RoleHolder roleHolder) {
-        super(userManagementService, roleHolder);
+public class UserTermsRestController {
+    private UserTermsService _userTermsService;
+    //private UserTermsPreferencesBean _preferences;
+
+    @Autowired
+    public void setUserTermsService(final UserTermsService userTermsService) {
+        _userTermsService = userTermsService;
     }
+
+ /*   @Autowired
+    final void setUserTermsPreferencesBean(final UserTermsPreferencesBean preferencesBean) {
+        _preferences = preferencesBean;
+    }*/
 
     @ApiOperation(value = "Returns a list of all subject mappings.",
                   notes = "Disregards source system.",
