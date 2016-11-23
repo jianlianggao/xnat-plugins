@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import uk.ac.ic.doc.biomedia.services.UserTermsService;
 
 import javax.inject.Inject;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -29,6 +30,10 @@ public class HibernateUserTermsService extends AbstractHibernateEntityService<Us
 
     public void setHasAcceptedTerms(final Boolean hasAcceptedTerms) {
         //getDao().create()
+    }
+
+    public void setAttributesForUser(final String user, HashMap attributes) {
+
     }
 
     public UserTerms getAttributesForUser(String user) {

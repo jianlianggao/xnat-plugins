@@ -1,35 +1,35 @@
-
-
 $page.setTitle("UserTerms")
 $page.setLinkColor($ui.alink)
 $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
-    window.currentID="$!om.getId()";
+    window.currentID = "$!om.getId()";
         #if($om.getProject())
             #if($om.getProject().equals(""))
-            window.currentProject="$!project";
+            window.currentProject = "$!project";
             #else
-            window.currentProject="$!om.getProject()";
+            window.currentProject = "$!om.getProject()";
             #end
         #else
-        window.currentProject="$!project";
+        window.currentProject = "$!project";
         #end
 
-    window.currentSubject="$!om.getSubjectId()";
-    window.currentLabel="$!om.getLabel()";
+    window.currentSubject = "$!om.getSubjectId()";
+    window.currentLabel = "$!om.getLabel()";
 </script>
 #if ($data.message)
 <div class="error">$data.message</div>
 #end
-<form ID="userTermsAcceptanceForm" name="userTermsAcceptanceForm" method="post" action="$link.setAction("AcceptTerms")">
+<form ID="userTermsAcceptanceForm" name="userTermsAcceptanceForm" method="post" action="$link.setAction("ModifyProject")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
+#*
     <input type='hidden' name='biomedia:userTerms/ID' value='$!item.getProperty("ID")'/>
+*#
     <input type="hidden" name="biomedia:userTerms/project" value='$!{project}'/>
-    <input type='hidden' name='biomedia:userTerms/subject_ID'
+#*    <input type='hidden' name='biomedia:userTerms/subject_ID'
            value='$!item.getProperty("biomedia:userTerms/subject_ID")'/>
-    <input type='hidden' name='biomedia:userTerms/label' value='$!item.getProperty("biomedia:userTerms/label")'/>
+    <input type='hidden' name='biomedia:userTerms/label' value='$!item.getProperty("biomedia:userTerms/label")'/>*#
     <input type="hidden" name="biomedia:userTerms.date.month" id="biomedia:userTerms.date.month" value=""/>
     <input type="hidden" name="biomedia:userTerms.date.date" id="biomedia:userTerms.date.date" value=""/>
     <input type="hidden" name="biomedia:userTerms.date.year" id="biomedia:userTerms.date.year" value=""/>
