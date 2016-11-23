@@ -1,12 +1,12 @@
-package uk.ac.ic.doc.biomedia.services.impl;
+package org.nrg.xnat.biomedia.userTerms.services.impl;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntityService;
-import uk.ac.ic.doc.biomedia.entities.UserTerms;
-import uk.ac.ic.doc.biomedia.repositories.UserTermsRepository;
+import org.nrg.xnat.biomedia.userTerms.entities.UserTerms;
+import org.nrg.xnat.biomedia.userTerms.repositories.UserTermsRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import uk.ac.ic.doc.biomedia.services.UserTermsService;
+import org.nrg.xnat.biomedia.userTerms.services.UserTermsService;
 
 import javax.inject.Inject;
 import java.util.HashMap;

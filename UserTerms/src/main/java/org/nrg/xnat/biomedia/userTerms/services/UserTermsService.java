@@ -1,7 +1,7 @@
-package uk.ac.ic.doc.biomedia.services;
+package org.nrg.xnat.biomedia.userTerms.services;
 
 import org.nrg.framework.orm.hibernate.BaseHibernateService;
-import uk.ac.ic.doc.biomedia.entities.UserTerms;
+import org.nrg.xnat.biomedia.userTerms.entities.UserTerms;
 
 import java.util.HashMap;
 

@@ -1,4 +1,4 @@
-package uk.ac.ic.doc.biomedia.entities;
+package org.nrg.xnat.biomedia.userTerms.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 
