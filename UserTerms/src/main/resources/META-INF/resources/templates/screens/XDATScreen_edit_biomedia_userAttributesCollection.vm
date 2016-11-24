@@ -1,4 +1,4 @@
-$page.setTitle("UserTerms")
+$page.setTitle("UserAttributes")
 $page.setLinkColor($ui.alink)
 $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
@@ -19,20 +19,20 @@ $page.setVlinkColor($ui.vlink)
 #if ($data.message)
 <div class="error">$data.message</div>
 #end
-<form ID="userTermsAcceptanceForm" name="userTermsAcceptanceForm" method="post" action="$link.setAction("ModifyProject")">
+<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post" action="$link.setAction("ModifyProject")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
 #*
-    <input type='hidden' name='biomedia:userTerms/ID' value='$!item.getProperty("ID")'/>
+    <input type='hidden' name='biomedia:userAttributes/ID' value='$!item.getProperty("ID")'/>
 *#
-    <input type="hidden" name="biomedia:userTerms/project" value='$!{project}'/>
-#*    <input type='hidden' name='biomedia:userTerms/subject_ID'
-           value='$!item.getProperty("biomedia:userTerms/subject_ID")'/>
-    <input type='hidden' name='biomedia:userTerms/label' value='$!item.getProperty("biomedia:userTerms/label")'/>*#
-    <input type="hidden" name="biomedia:userTerms.date.month" id="biomedia:userTerms.date.month" value=""/>
-    <input type="hidden" name="biomedia:userTerms.date.date" id="biomedia:userTerms.date.date" value=""/>
-    <input type="hidden" name="biomedia:userTerms.date.year" id="biomedia:userTerms.date.year" value=""/>
+    <input type="hidden" name="biomedia:userAttributes/project" value='$!{project}'/>
+#*    <input type='hidden' name='biomedia:userAttributes/subject_ID'
+           value='$!item.getProperty("biomedia:userAttributes/subject_ID")'/>
+    <input type='hidden' name='biomedia:userAttributes/label' value='$!item.getProperty("biomedia:userAttributes/label")'/>*#
+    <input type="hidden" name="biomedia:userAttributes.date.month" id="biomedia:userAttributes.date.month" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.date" id="biomedia:userAttributes.date.date" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.year" id="biomedia:userAttributes.date.year" value=""/>
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
 
     #if($vr)
@@ -50,7 +50,7 @@ $page.setVlinkColor($ui.vlink)
             </td>
         </tr>
         <tr>
-            <td>Please accept the terms and conditions in order to be able to download data.
+            <td>Please accept the attributes and conditions in order to be able to download data.
             </td>
         </tr>
         <tr>
@@ -65,11 +65,11 @@ $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
     function validateForm() {
         var today = new Date();
-        document.getElementById('biomedia:userTerms.date.month').value = today.getMonth();
-        document.getElementById('biomedia:userTerms.date.date').value = today.getDate();
-        document.getElementById('biomedia:userTerms.date.year').value = today.getFullYear();
+        document.getElementById('biomedia:userAttributes.date.month').value = today.getMonth();
+        document.getElementById('biomedia:userAttributes.date.date').value = today.getDate();
+        document.getElementById('biomedia:userAttributes.date.year').value = today.getFullYear();
 
-        document.userTermsAcceptanceForm.submit();
+        document.userAttributesAcceptanceForm.submit();
         return true;
     }
 </script>

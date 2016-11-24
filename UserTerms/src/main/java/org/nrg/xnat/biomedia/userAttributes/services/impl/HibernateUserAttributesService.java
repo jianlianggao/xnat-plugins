@@ -1,29 +1,29 @@
-package org.nrg.xnat.biomedia.userTerms.services.impl;
+package org.nrg.xnat.biomedia.userAttributes.services.impl;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntityService;
-import org.nrg.xnat.biomedia.userTerms.entities.UserTerms;
-import org.nrg.xnat.biomedia.userTerms.repositories.UserTermsRepository;
+import org.nrg.xnat.biomedia.userAttributes.entities.UserAttributes;
+import org.nrg.xnat.biomedia.userAttributes.repositories.UserAttributesRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.nrg.xnat.biomedia.userTerms.services.UserTermsService;
+import org.nrg.xnat.biomedia.userAttributes.services.UserAttributesService;
 
 import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
 
 @Service
-public class HibernateUserTermsService extends AbstractHibernateEntityService<UserTerms, UserTermsRepository> implements UserTermsService {
+public class HibernateUserAttributesService extends AbstractHibernateEntityService<UserAttributes, UserAttributesRepository> implements UserAttributesService {
 
     @Inject
-    private UserTermsRepository _dao;
+    private UserAttributesRepository _dao;
 
     /**
      * {@inheritDoc}
      */
     @Transactional
     @Override
-    public UserTerms findBySubjectId(final String subjectId) {
+    public UserAttributes findBySubjectId(final String subjectId) {
         return getDao().findByUniqueProperty("subjectId", subjectId);
     }
 
@@ -36,10 +36,10 @@ public class HibernateUserTermsService extends AbstractHibernateEntityService<Us
 
     }
 
-    public UserTerms getAttributesForUser(String user) {
-        UserTerms example = new UserTerms();
+    public UserAttributes getAttributesForUser(String user) {
+        UserAttributes example = new UserAttributes();
         example.setAuthUser(user);
-        List<UserTerms> attributes = _dao.findByExample(example, AbstractHibernateEntity.getExcludedProperties("verified", "failedLoginAttempts"));
+        List<UserAttributes> attributes = _dao.findByExample(example, AbstractHibernateEntity.getExcludedProperties("verified", "failedLoginAttempts"));
         if (attributes == null || attributes.size() == 0) { return null; }
         return attributes.get(0);
     }
