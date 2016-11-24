@@ -1,6 +1,6 @@
 <!-- Sequence: 6 -->
 <li class="yuimenuitem">
-    <A href="$link.setPage('XDATScreen_edit_biomedia_userAttributes.vm')">
+    <A href="$link.setPage('XDATScreen_edit_biomedia_userTerms.vm')">
         <div class="ic">&nbsp;</div>
         <div class="ic_spacer">&nbsp;</div>
         Accept User Terms</A>
