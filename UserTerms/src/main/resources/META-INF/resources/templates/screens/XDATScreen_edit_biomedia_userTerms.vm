@@ -19,7 +19,7 @@ $page.setVlinkColor($ui.vlink)
 #if ($data.message)
 <div class="error">$data.message</div>
 #end
-<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post" action="$link.setAction("ModifyProject")">
+<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post" action="$link.setAction("AcceptTerms")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
