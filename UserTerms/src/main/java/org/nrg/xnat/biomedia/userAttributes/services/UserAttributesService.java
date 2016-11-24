@@ -4,6 +4,7 @@ import org.nrg.framework.orm.hibernate.BaseHibernateService;
 import org.nrg.xnat.biomedia.userAttributes.entities.UserAttributes;
 
 import java.util.HashMap;
+import java.util.List;
 
 public interface UserAttributesService extends BaseHibernateService<UserAttributes> {
     /**
@@ -13,9 +14,15 @@ public interface UserAttributesService extends BaseHibernateService<UserAttribut
      *
      * @return The subject with the indicated ID, null if not found.
      */
+    UserAttributes findByUsername(final String username);
+
     UserAttributes findBySubjectId(final String subjectId);
 
-    UserAttributes getAttributesForUser (final String user);
-    void setAttributesForUser(final String User, HashMap attributes);
+    String getStringAttributeForUser(final String user, String key);
 
+    Boolean getBooleanAttributeForUser(final String user, Boolean key);
+
+    HashMap getAttributesForUsername (final String user, List keys);
+
+    void setAttributesForUsername(final String user, HashMap attributes);
 }

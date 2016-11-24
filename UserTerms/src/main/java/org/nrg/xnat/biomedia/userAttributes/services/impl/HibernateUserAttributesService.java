@@ -27,21 +27,35 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
         return getDao().findByUniqueProperty("subjectId", subjectId);
     }
 
-
-    public void setHasAcceptedTerms(final Boolean hasAcceptedTerms) {
-        //getDao().create()
+    @Override
+    public UserAttributes findByUsername(String username) {
+        return null;
     }
 
-    public void setAttributesForUser(final String user, HashMap attributes) {
+    @Override
+    public String getStringAttributeForUser(String user, String key) {
+        UserAttributes example = new UserAttributes(user);
 
-    }
-
-    public UserAttributes getAttributesForUser(String user) {
-        UserAttributes example = new UserAttributes();
-        example.setAuthUser(user);
         List<UserAttributes> attributes = _dao.findByExample(example, AbstractHibernateEntity.getExcludedProperties("verified", "failedLoginAttempts"));
         if (attributes == null || attributes.size() == 0) { return null; }
-        return attributes.get(0);
+
+        return attributes.get(0).toString();
+    }
+
+    @Override
+    public HashMap getAttributesForUsername(String user, List keys) {
+        return null;
+    }
+
+    @Override
+    public Boolean getBooleanAttributeForUser(String user, Boolean key) {
+        return null;
+    }
+
+    @Transactional
+    @Override
+    public void setAttributesForUsername(String User, HashMap attributes) {
+        //_dao.
     }
 
 }

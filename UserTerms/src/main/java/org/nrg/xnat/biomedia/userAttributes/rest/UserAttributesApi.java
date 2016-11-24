@@ -42,7 +42,7 @@ public class UserAttributesApi {
         _preferences = preferences;
     }
 
-    @ApiOperation(value = "Returns a list of all User attributes.",
+    @ApiOperation(value = "Returns a list of all extended user attributes.",
                   notes = "Disregards source system.",
                   response = UserAttributes.class, responseContainer = "List")
     @ApiResponses({@ApiResponse(code = 200, message = "User attributess successfully retrieved."),
@@ -53,7 +53,7 @@ public class UserAttributesApi {
         return new ResponseEntity<>(_userAttributesService.getAll(), HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Creates a new User attributes.",
+    @ApiOperation(value = "Creates a new User attribute entity.",
                   notes = "Disregards source system.",
                   response = UserAttributes.class)
     @ApiResponses({@ApiResponse(code = 200, message = "User attributes successfully created."),
