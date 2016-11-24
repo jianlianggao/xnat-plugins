@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "authUser"), @UniqueConstraint(columnNames = {"hasAcceptedTerms"})})
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "user")})
 public class UserAttributes extends AbstractHibernateEntity {
     private String _user;
     private Boolean _hasAcceptedTerms;
