@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@NrgPreferenceBean(toolId = "userAttributes", toolName = "XNAT User Terms Plugin")
+@NrgPreferenceBean(toolId = "userAttributes", toolName = "XNAT User Attributes Plugin")
 public class UserAttributesPreferencesBean extends AbstractPreferenceBean {
     @Autowired
     public UserAttributesPreferencesBean(final NrgPreferenceService preferenceService, final ConfigPaths configFolderPaths) {
