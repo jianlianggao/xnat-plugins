@@ -1,4 +1,4 @@
-$page.setTitle("UserTerms")
+$page.setTitle("UserAttributes")
 $page.setLinkColor($ui.alink)
 $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
@@ -19,20 +19,20 @@ $page.setVlinkColor($ui.vlink)
 #if ($data.message)
 <div class="error">$data.message</div>
 #end
-<form ID="userTermsAcceptanceForm" name="userTermsAcceptanceForm" method="post" action="$link.setAction("ModifyProject")">
+<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post" action="$link.setAction("AcceptTerms")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
 #*
-    <input type='hidden' name='biomedia:userTerms/ID' value='$!item.getProperty("ID")'/>
+    <input type='hidden' name='biomedia:userAttributes/ID' value='$!item.getProperty("ID")'/>
 *#
-    <input type="hidden" name="biomedia:userTerms/project" value='$!{project}'/>
-#*    <input type='hidden' name='biomedia:userTerms/subject_ID'
-           value='$!item.getProperty("biomedia:userTerms/subject_ID")'/>
-    <input type='hidden' name='biomedia:userTerms/label' value='$!item.getProperty("biomedia:userTerms/label")'/>*#
-    <input type="hidden" name="biomedia:userTerms.date.month" id="biomedia:userTerms.date.month" value=""/>
-    <input type="hidden" name="biomedia:userTerms.date.date" id="biomedia:userTerms.date.date" value=""/>
-    <input type="hidden" name="biomedia:userTerms.date.year" id="biomedia:userTerms.date.year" value=""/>
+    <input type="hidden" name="biomedia:userAttributes/project" value='$!{project}'/>
+#*    <input type='hidden' name='biomedia:userAttributes/subject_ID'
+           value='$!item.getProperty("biomedia:userAttributes/subject_ID")'/>
+    <input type='hidden' name='biomedia:userAttributes/label' value='$!item.getProperty("biomedia:userAttributes/label")'/>*#
+    <input type="hidden" name="biomedia:userAttributes.date.month" id="biomedia:userAttributes.date.month" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.date" id="biomedia:userAttributes.date.date" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.year" id="biomedia:userAttributes.date.year" value=""/>
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
 
     #if($vr)
@@ -42,7 +42,7 @@ $page.setVlinkColor($ui.vlink)
 
     <table>
         <tr>
-            <td><h3>dHCP $project.getName() data set: Terms of Use</h3>
+            <td><h3>dHCP $!{project.getName()} data set: Terms of Use</h3>
             </td>
         </tr>
         <tr>
@@ -50,66 +50,9 @@ $page.setVlinkColor($ui.vlink)
             </td>
         </tr>
         <tr>
-            <td>Please accept the terms and conditions in order to be able to download data.
+            <td>Please accept the attributes and conditions in order to be able to download data.
             </td>
         </tr>
-        <tr>
-            <td>&nbsp;
-            </td>
-        </tr>
-
-        <tr>
-            <td style="width:95%;padding:20px; font:12px/16px Arial, Helvetica, sans-serif;">
-            #*
-                    <div style="width:95%;padding:20px; font:12px/16px Arial, Helvetica, sans-serif;">
-            *#
-                <style type="text/css">
-                    .du p, .du li {
-                        font-size: 11px;
-                        margin-bottom: 11px;
-                    }
-
-                    .du h4 {
-                        margin-top: 0;
-                    }
-                </style>
-                <p>I request access to data collected by the Washington University - University of Minnesota Consortium
-                    of the Human Connectome Project (WU-Minn HCP), and I agree to the following:</p>
-                <ol>
-                    <li>By downloading the Connectome Workbench Beta tutorial dataset, I will receive access to
-                        de-identified data from the WU-Minn HCP. I will not attempt to establish the identity of, or
-                        attempt to contact any of these subjects.
-                    </li>
-                    <li>I understand that under no circumstances will the code that would link these data to Protected
-                        Health Information be given to me.
-                    </li>
-                    <li>I will comply with any rules and regulations imposed by my institution and its institutional
-                        review board in requesting these data.
-                    </li>
-                    <li>The processed connectivity data in the Connectome Workbench Beta tutorial dataset are solely for
-                        the purpose of beta testing Connectome Workbench software. Therefore, I understand that <strong>redistribution
-                            of original or derived data from the Connectome Workbench Beta tutorial dataset is not
-                            permitted.</strong></li>
-                    <li>The methods used to process MRI data in Connectome Workbench Beta tutorial dataset are still
-                        under development, have not been previously disclosed and cannot be referenced. Therefore, I
-                        understand that <strong>any results I obtain from the Connectome Workbench Beta tutorial dataset
-                            should not be published or publicly presented.</strong> (Other datasets available through
-                        the HCP may be subject to separate Data Use Terms.)
-                    </li>
-                    <li>Use of the Conte 69 atlas is not subject to the above restrictions on redistribution and
-                        publishing.
-                    </li>
-                    <li>Failure to abide by these guidelines will result in termination of my privileges to access
-                        WU-Minn HCP data.
-                    </li>
-                </ol>
-                <p>v. 2016-10-24</p>
-            </td>
-        #*
-                </div>
-        *#
-        </tr>
-
         <tr>
             <td>&nbsp;
             </td>
@@ -176,11 +119,11 @@ $page.setVlinkColor($ui.vlink)
 <script type="text/javascript">
     function validateForm() {
         var today = new Date();
-        document.getElementById('biomedia:userTerms.date.month').value = today.getMonth();
-        document.getElementById('biomedia:userTerms.date.date').value = today.getDate();
-        document.getElementById('biomedia:userTerms.date.year').value = today.getFullYear();
+        document.getElementById('biomedia:userAttributes.date.month').value = today.getMonth();
+        document.getElementById('biomedia:userAttributes.date.date').value = today.getDate();
+        document.getElementById('biomedia:userAttributes.date.year').value = today.getFullYear();
 
-        document.userTermsAcceptanceForm.submit();
+        document.userAttributesAcceptanceForm.submit();
         return true;
     }
 </script>
