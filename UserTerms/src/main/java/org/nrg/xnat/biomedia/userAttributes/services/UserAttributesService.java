@@ -22,7 +22,9 @@ public interface UserAttributesService extends BaseHibernateService<UserAttribut
 
     Boolean getBooleanAttributeForUser(final String user, Boolean key);
 
-    HashMap getAttributesForUsername (final String user, List keys);
+    UserAttributes getAttributesForUsername (final String user);
 
     void setAttributesForUsername(final String user, HashMap attributes);
+
+    String getTestString();
 }

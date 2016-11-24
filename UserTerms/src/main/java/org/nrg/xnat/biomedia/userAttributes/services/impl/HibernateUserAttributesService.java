@@ -11,6 +11,8 @@ import org.nrg.xnat.biomedia.userAttributes.services.UserAttributesService;
 import javax.inject.Inject;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Service
 public class HibernateUserAttributesService extends AbstractHibernateEntityService<UserAttributes, UserAttributesRepository> implements UserAttributesService {
@@ -29,13 +31,14 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
 
     @Override
     public UserAttributes findByUsername(String username) {
-        return null;
+        return _dao.findAllByExample(new UserAttributes(username), AbstractHibernateEntity.getExcludedProperties("what", "okay")).get(0);
     }
 
     @Override
     public String getStringAttributeForUser(String user, String key) {
         UserAttributes example = new UserAttributes(user);
 
+        //final Map<String, Object> attributes = new HashMap<>();
         List<UserAttributes> attributes = _dao.findByExample(example, AbstractHibernateEntity.getExcludedProperties("verified", "failedLoginAttempts"));
         if (attributes == null || attributes.size() == 0) { return null; }
 
@@ -43,13 +46,18 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
     }
 
     @Override
-    public HashMap getAttributesForUsername(String user, List keys) {
-        return null;
+    public UserAttributes getAttributesForUsername(String user) {
+        return _dao.findAllByExample(new UserAttributes(user), AbstractHibernateEntity.getExcludedProperties("what", "okay")).get(0);
     }
 
     @Override
     public Boolean getBooleanAttributeForUser(String user, Boolean key) {
         return null;
+    }
+
+    @Override
+    public String getTestString() {
+        return "It does work!";
     }
 
     @Transactional
