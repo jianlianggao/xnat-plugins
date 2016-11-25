@@ -13,38 +13,14 @@
 	<xs:element name="UserAttributesCollection" type="biomedia:userAttributesCollection"/>
 	<xs:complexType name="userAttributesCollection">
 		<xs:annotation>
-			<xs:documentation>Indicates whether user has signed attributes.</xs:documentation>
+			<xs:documentation>Indicates additional user attributes.</xs:documentation>
 		</xs:annotation>
 		<xs:complexContent>
-			<xs:extension base="xnat:subjectAssessorData">
+			<xs:extension base="xnat:projectData">
 				<xs:sequence>
-					<xs:element name="dna">
+					<xs:element name="hasAcceptedTerms">
 						<xs:annotation>
-							<xs:documentation>DNA</xs:documentation>
-						</xs:annotation>
-						<xs:simpleType>
-							<xs:restriction base="xs:boolean"/>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="rna">
-						<xs:annotation>
-							<xs:documentation>RNA</xs:documentation>
-						</xs:annotation>
-						<xs:simpleType>
-							<xs:restriction base="xs:boolean"/>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="plasma">
-						<xs:annotation>
-							<xs:documentation>Plasma</xs:documentation>
-						</xs:annotation>
-						<xs:simpleType>
-							<xs:restriction base="xs:boolean"/>
-						</xs:simpleType>
-					</xs:element>
-					<xs:element name="serum">
-						<xs:annotation>
-							<xs:documentation>Serum</xs:documentation>
+							<xs:documentation>Terms of Use</xs:documentation>
 						</xs:annotation>
 						<xs:simpleType>
 							<xs:restriction base="xs:boolean"/>
