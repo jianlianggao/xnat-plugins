@@ -1,4 +1,4 @@
-package uk.ac.ic.doc.biomedia;
+package uk.ac.ic.doc.biomedia.plugin;
 
 import org.nrg.framework.annotations.XnatPlugin;
 /**
@@ -6,7 +6,7 @@ import org.nrg.framework.annotations.XnatPlugin;
  */
 @XnatPlugin(value = "ldap-xnat-plugin", name = "LDAP custom config", description = "Login with your department's " +
         "LDAP credentials")
-public class WorkshopXnatPlugin {
+public class DhcpLdapPlugin {
 
 
 }
