@@ -14,6 +14,9 @@ public interface UserAttributesService extends BaseHibernateService<UserAttribut
      *
      * @return The subject with the indicated ID, null if not found.
      */
+
+    UserAttributes attachUserAttributes(String user, Boolean terms);
+
     UserAttributes findByUsername(final String username);
 
     UserAttributes findBySubjectId(final String subjectId);

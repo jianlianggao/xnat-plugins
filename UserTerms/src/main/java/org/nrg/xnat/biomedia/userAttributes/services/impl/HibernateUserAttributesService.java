@@ -23,6 +23,16 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
     /**
      * {@inheritDoc}
      */
+
+    @Transactional
+    @Override
+    public UserAttributes attachUserAttributes(String user, Boolean terms) {
+        UserAttributes data = newEntity();
+        data.setHasAcceptedTerms(terms);
+        _dao.create(data);
+        return data;
+    }
+
     @Transactional
     @Override
     public UserAttributes findBySubjectId(final String subjectId) {
