@@ -53,38 +53,26 @@ $page.setVlinkColor($ui.vlink)
             <td>Please accept the attributes and conditions in order to be able to download data.
             </td>
         </tr>
+
         <tr>
             <td>&nbsp;
             </td>
         </tr>
 
-        <tr>
+#*        <tr>
+            #formLabel("I accept above terms")
             <td>
-                <input type="checkbox" name="acceptbox" value="enter value here">I accept above Terms of Use
+                #xdatBooleanCheckbox("biomedia:userAttributes/userTerms" $item $vr)
             </td>
         </tr>
-
         <tr>
             <td>&nbsp;
             </td>
-        </tr>
-
-        <tr>
-            #formLabel("Accept this thing")
-            <td>
-                #xdatBooleanCheckbox("biomedia:userTerms/acceptance" $item $vr)
-            </td>
-        </tr>
-
-
-        <tr>
-            <td>&nbsp;
-            </td>
-        </tr>
+        </tr>*#
 
         <tr>
             <td align="center"><input type="button" ONCLICK="javascript:history.go(-1)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
-                    type="submit" name="eventSubmit_doPerform" value="Submit"/>
+                    type="submit" name="eventSubmit_doPerform" value="I accept"/>
             </td>
         </tr>
         <tr>
@@ -95,16 +83,6 @@ $page.setVlinkColor($ui.vlink)
         <tr>
             <td>
                 #xdatEditProps($item $edit_screen)
-            </td>
-        </tr>
-        <tr>
-            <td>&nbsp;
-            </td>
-        </tr>
-
-        <tr>
-            <td colspan=2 align=left>
-                <input type="button" onclick="validateForm();" name="eventSubmit_doInsert" value="Submit"/>
             </td>
         </tr>
         <tr>
