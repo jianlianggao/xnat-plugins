@@ -92,6 +92,46 @@ sourceSets {
         }
     }
 }
+configurations {
+    all*.exclude group: 'avalon-framework'
+    all*.exclude group: 'avalon-logkit'
+    all*.exclude group: 'com.metaparadigm'
+    all*.exclude group: 'excalibur-component'
+    all*.exclude group: 'excalibur-instrument'
+    all*.exclude group: 'excalibur-logger'
+    all*.exclude group: 'excalibur-pool'
+    all*.exclude group: 'fop'
+    all*.exclude group: 'geronimo-spec'
+    all*.exclude group: 'hsqldb'
+    all*.exclude group: 'imagej'
+    all*.exclude group: 'jamon'
+    all*.exclude group: 'jakarta-regexp'
+    all*.exclude group: 'org.apache.geronimo.specs'
+    all*.exclude group: 'servletapi'
+    all*.exclude group: 'quartz'
+    all*.exclude group: 'ant', module: 'ant'
+    all*.exclude group: 'edu.ucar', module: 'netcdf'
+    all*.exclude group: 'javax.jms', module: 'jms'
+    all*.exclude group: 'javax.mail', module: 'mail'
+    all*.exclude group: 'javax.servlet', module: 'servlet-api'
+    all*.exclude group: 'javax.sql', module: 'jdbc-stdext'
+    all*.exclude group: 'javax.transaction', module: 'jta'
+    all*.exclude group: 'jdbc', module: 'jdbc'
+    all*.exclude group: 'jms', module: 'jms'
+    all*.exclude group: 'jython', module: 'jython'
+    all*.exclude group: 'net.sf.saxon', module: 'saxon'
+    all*.exclude group: 'net.sf.saxon', module: 'saxon-dom'
+    all*.exclude group: 'net.sf.saxon', module: 'saxon-xpath'
+    all*.exclude group: 'net.sf.saxon', module: 'Saxon-B'
+    all*.exclude group: 'stax', module: 'stax-api'
+    all*.exclude group: 'xml-apis', module: 'xml-apis'
+    all*.exclude module: 'log4j-slf4j-impl'
+    all*.exclude module: 'pipelineCNDAXNAT'
+    all*.exclude module: 'slf4j-simple'
+    all*.exclude module: 'commons-betwixt'
+    all*.exclude module: 'commons-messenger'
+}
+
 
 dependencies {
     compile("org.nrg.xnat:web:${vXnat}") {
@@ -103,6 +143,11 @@ dependencies {
     compile("org.nrg.xdat:core:${vXnat}") {
         exclude group: '*'
     }
+
+    compile("stratum:stratum:1.0-b5") {
+        exclude group: '*'
+    }
+
     compile "org.nrg:prefs:${vXnat}"
     compile "org.nrg:framework:${vXnat}"
 
