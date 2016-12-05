@@ -1,4 +1,4 @@
-package org.nrg.xnat.biomedia.userAttributes.turbine.modules.actions;
+package org.nrg.xnat.turbine.modules.actions;
 
 import org.apache.log4j.Logger;
 import org.apache.turbine.util.RunData;
