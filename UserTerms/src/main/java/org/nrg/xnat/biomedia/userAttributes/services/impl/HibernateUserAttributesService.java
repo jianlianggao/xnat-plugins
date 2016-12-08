@@ -33,11 +33,30 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
 
     @Transactional
     @Override
-    public UserAttributes findByUsername(String username) {
-        //UserAttributes user = _dao.findAllByExample(new UserAttributes(username));
-        //return user;
+    public UserAttributes findByUserName(String username) {
+        List<UserAttributes> user = _dao.findByProperty("userName", username);
 
-        return new UserAttributes("Hansi", false);
+        //List<UserAttributes> user = _dao.findAllByExample(new UserAttributes(username), AbstractHibernateEntity.getExcludedProperties("what", "okay"));
+        if (user == null || user.size() == 0) {
+            return null;
+        }
+
+        return user.get(0);
+    }
+
+    @Transactional
+    public UserAttributes findByExampleUserName(String username) {
+        UserAttributes example = new UserAttributes(username);
+
+        String[] EXCLUSION_PROPERTIES_XDATUSERLOCK = AbstractHibernateEntity.getExcludedProperties("hasacceptedterms", "hasAcceptedTerms");
+
+        List<UserAttributes> user = _dao.findByExample(example, EXCLUSION_PROPERTIES_XDATUSERLOCK);
+
+        if (user == null || user.size() == 0) {
+            return null;
+        }
+
+        return user.get(0);
     }
 
     @Transactional

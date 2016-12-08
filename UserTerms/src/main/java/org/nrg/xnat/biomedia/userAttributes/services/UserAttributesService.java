@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface UserAttributesService extends BaseHibernateService<UserAttributes> {
 
-    UserAttributes findByUsername(final String username);
+    UserAttributes findByUserName(final String username);
+
+    UserAttributes findByExampleUserName(String username);
 
     String getStringAttributeForUser(final String user, String key);
 
