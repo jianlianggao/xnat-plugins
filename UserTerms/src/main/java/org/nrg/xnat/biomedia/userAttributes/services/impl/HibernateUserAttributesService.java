@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.nrg.xnat.biomedia.userAttributes.services.UserAttributesService;
 
 import javax.inject.Inject;
+import javax.persistence.Entity;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,30 +21,26 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
     @Inject
     private UserAttributesRepository _dao;
 
-    /**
-     * {@inheritDoc}
-     */
-
-    @Transactional
+  /*  @Transactional
     @Override
     public UserAttributes attachUserAttributes(String user, Boolean terms) {
-        UserAttributes data = newEntity();
+        UserAttributes data = new UserAttributes(user);
+        data.setUser(user);
         data.setHasAcceptedTerms(terms);
         _dao.create(data);
         return data;
-    }
+    }*/
 
     @Transactional
     @Override
-    public UserAttributes findBySubjectId(final String subjectId) {
-        return getDao().findByUniqueProperty("subjectId", subjectId);
-    }
-
-    @Override
     public UserAttributes findByUsername(String username) {
-        return _dao.findAllByExample(new UserAttributes(username), AbstractHibernateEntity.getExcludedProperties("what", "okay")).get(0);
+        //UserAttributes user = _dao.findAllByExample(new UserAttributes(username));
+        //return user;
+
+        return new UserAttributes("Hansi", false);
     }
 
+    @Transactional
     @Override
     public String getStringAttributeForUser(String user, String key) {
         UserAttributes example = new UserAttributes(user);
@@ -55,16 +52,19 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
         return attributes.get(0).toString();
     }
 
+    @Transactional
     @Override
     public UserAttributes getAttributesForUsername(String user) {
         return _dao.findAllByExample(new UserAttributes(user), AbstractHibernateEntity.getExcludedProperties("what", "okay")).get(0);
     }
 
+    @Transactional
     @Override
     public Boolean getBooleanAttributeForUser(String user, Boolean key) {
         return null;
     }
 
+    @Transactional
     @Override
     public String getTestString() {
         return "It does work!";
