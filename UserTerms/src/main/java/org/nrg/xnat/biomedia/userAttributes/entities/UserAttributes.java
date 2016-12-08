@@ -2,30 +2,35 @@ package org.nrg.xnat.biomedia.userAttributes.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "user")})
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"userLoginName", "hasAcceptedTerms"}))
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "nrg")
 public class UserAttributes extends AbstractHibernateEntity {
-    private String _user;
+
+    private String _userName;
+
     private Boolean _hasAcceptedTerms;
     //private Boolean _usesIpfs;
 
     public UserAttributes(String user, Boolean hasAcceptedTerms) {
-        _user = user;
+        _userName = user;
         _hasAcceptedTerms = hasAcceptedTerms;
-    }
-    public UserAttributes(String user) {
-        this(user, false);
+        setEnabled(true);
     }
 
-    public String getUser() {
-        return _user;
+    public UserAttributes(String username) {
+        this(username, false);
     }
-    public void setUser(final String user) {
-        _user = user;
+
+
+    public String getUserName() {
+        return _userName;
+    }
+    public void setUserName(final String username) {
+        _userName = username;
     }
 
     public Boolean hasAcceptedTerms() {
