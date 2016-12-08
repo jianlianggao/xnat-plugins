@@ -1,0 +1,136 @@
+$page.setTitle("UserAttributes")
+$page.setLinkColor($ui.alink)
+$page.setVlinkColor($ui.vlink)
+<script type="text/javascript">
+    window.currentID = "$!om.getId()";
+        #if($om.getProject())
+            #if($om.getProject().equals(""))
+            window.currentProject = "$!project";
+            #else
+            window.currentProject = "$!om.getProject()";
+            #end
+        #else
+        window.currentProject = "$!project";
+        #end
+
+    window.currentSubject = "$!om.getSubjectId()";
+    window.currentLabel = "$!om.getLabel()";
+</script>
+#if ($data.message)
+<div class="error">$data.message</div>
+#end
+<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post"
+      action="$link.setAction("SignTerms")">
+    <input type="hidden" name="project" value="$project.getId()"/>
+    <input type="hidden" name="project" value="$!{project}">
+    <input type="hidden" name="part_id" value="$!{part_id}">
+#*
+    <input type='hidden' name='biomedia:userAttributes/ID' value='$!item.getProperty("ID")'/>
+*##*
+    <input type="hidden" name="biomedia:userAttributes/project" value='$!{project}'/>
+*##*    <input type='hidden' name='biomedia:userAttributes/subject_ID'
+           value='$!item.getProperty("biomedia:userAttributes/subject_ID")'/>
+    <input type='hidden' name='biomedia:userAttributes/label' value='$!item.getProperty("biomedia:userAttributes/label")'/>*##*
+    <input type="hidden" name="biomedia:userAttributes.date.month" id="biomedia:userAttributes.date.month" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.date" id="biomedia:userAttributes.date.date" value=""/>
+    <input type="hidden" name="biomedia:userAttributes.date.year" id="biomedia:userAttributes.date.year" value=""/>*#
+    <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
+
+    #if($vr)
+        <div class="error">Invalid parameters:<BR>$vr.toHTML()</div>
+        <HR>
+    #end
+
+    <table>
+        <tr>
+            <td><h3>dHCP $!{project.getName()} data set: Terms of Use</h3>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                The Consortium of King’s College London, Imperial College London, and University of Oxford (KCL-ICL-OX
+                dHCP
+                Consortium) has collected data from human subjects (data subjects) under the Developing Human Connectome
+                Project (dHCP data).
+                I understand that the KCL-ICL-OX dHCP Consortium will release Open Access dHCP Data, i.e.
+                dHCP data which has an extremely low potential for identification of data subjects (see #3 below) after
+                an
+                individual researcher has agreed to these Open Access dHCP Data - Terms of Use
+                I request access to Open Access dHCP Data for NON-COMMERCIAL AND NOT-FOR-PROFIT research purposes
+                (research), and I agree to the following terms:
+            </td>
+        </tr>
+        <tr>
+            <td>
+                I declare that I am employed by, or a student of, a non-commercial/not-for-profit organisation and I
+                will
+                not
+                use dHCP data for any direct commercial purpose, such as fee-for-service work. I understand that if I
+                wish
+                to
+                use dHCP data for any direct commercial purpose, my institution will be required to obtain a commercial
+                licence from the KCL-ICL-OX dHCP Consortium, and the KCL-ICL-OX dHCP Consortium has no obligation to
+                provide such a commercial license.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                I will use dHCP data responsibly and only for non-commercial research that enables the advancement of
+                science and medicine.
+            </td>
+        </tr>
+
+
+    #*        <tr>
+                #formLabel("I accept above terms")
+                <td>
+                    #xdatBooleanCheckbox("biomedia:userAttributes/userTerms" $item $vr)
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+            </tr>*#
+
+        <tr>
+            <td align="center"><input type="button" ONCLICK="javascript:history.go(-1)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
+                    type="submit" name="eventSubmit_doPerform" value="I accept"/>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                #xdatEditProps($item $edit_screen)
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+#*<script type="text/javascript">
+    function validateForm() {
+        var today = new Date();
+        document.getElementById('biomedia:userAttributes.date.month').value = today.getMonth();
+        document.getElementById('biomedia:userAttributes.date.date').value = today.getDate();
+        document.getElementById('biomedia:userAttributes.date.year').value = today.getFullYear();
+
+        document.userAttributesAcceptanceForm.submit();
+        return true;
+    }
+</script>*#
+
