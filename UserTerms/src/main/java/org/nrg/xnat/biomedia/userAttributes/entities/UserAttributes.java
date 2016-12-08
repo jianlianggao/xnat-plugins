@@ -6,38 +6,43 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"userLoginName", "hasAcceptedTerms"}))
+//@Table(uniqueConstraints = @UniqueConstraint(columnNames = {"username", "hasAcceptedTerms"}))
 //@Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "nrg")
 public class UserAttributes extends AbstractHibernateEntity {
 
+    @Column(name = "username")
     private String _userName;
 
-    private Boolean _hasAcceptedTerms;
+    @Column(name = "has_accepted_terms")
+    private Boolean _acceptedTerms;
     //private Boolean _usesIpfs;
 
-    public UserAttributes(String user, Boolean hasAcceptedTerms) {
-        _userName = user;
-        _hasAcceptedTerms = hasAcceptedTerms;
+    public UserAttributes() {
+    }
+
+    public UserAttributes(String userName, Boolean acceptedTerms) {
+        _userName = userName;
+        _acceptedTerms = acceptedTerms;
         setEnabled(true);
     }
 
-    public UserAttributes(String username) {
-        this(username, false);
+    public UserAttributes(String userName) {
+        this(userName, false);
     }
 
 
     public String getUserName() {
         return _userName;
     }
-    public void setUserName(final String username) {
-        _userName = username;
+    public void setUserName(final String userName) {
+        _userName = userName;
     }
 
     public Boolean hasAcceptedTerms() {
-        return _hasAcceptedTerms;
+        return _acceptedTerms;
     }
-    public void setHasAcceptedTerms(final Boolean status) {
-        _hasAcceptedTerms = status;
+    public void setAcceptedTerms(final Boolean status) {
+        _acceptedTerms = status;
     }
 
 }
