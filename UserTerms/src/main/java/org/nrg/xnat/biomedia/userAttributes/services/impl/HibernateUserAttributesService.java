@@ -63,4 +63,16 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
         return user.get(0);
     }
 
+    @Override
+    @Transactional
+    public boolean updateUserAttributes(UserAttributes entity) {
+        try {
+            _dao.saveOrUpdate(entity);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 }

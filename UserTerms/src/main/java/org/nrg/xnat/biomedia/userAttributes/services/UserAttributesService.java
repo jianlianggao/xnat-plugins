@@ -14,4 +14,6 @@ public interface UserAttributesService extends BaseHibernateService<UserAttribut
 
     UserAttributes findByProperty(String property, String value);
 
+    boolean updateUserAttributes(UserAttributes entity);
+
 }
