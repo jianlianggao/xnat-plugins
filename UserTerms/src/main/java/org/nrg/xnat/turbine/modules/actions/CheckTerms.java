@@ -27,13 +27,14 @@ public class CheckTerms extends SecureAction {
         String username = user.getUsername();
 
         //Check if there is already an UserAttributes instance for this user
- /*       try {
-            UserAttributes thisUser = service.findByUsername(username);
+        try {
+            UserAttributes thisUser = service.findByUserName(username);
+            if (thisUser == null) {
+                service.create(new UserAttributes(username));
+            }
         } catch (Exception e) {
-            service.create(new UserAttributes(username));
-        }*/
-
-        service.create(new UserAttributes(username, false));
+            e.printStackTrace();
+        }
 
         try {
             UserAttributes extendedUser = service.findByUserName(username);

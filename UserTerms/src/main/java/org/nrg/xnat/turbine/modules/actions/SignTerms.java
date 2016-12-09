@@ -27,22 +27,18 @@ public class SignTerms extends SecureAction {
 
         UserI user = TurbineUtils.getUser(data);
 
-        logger.info(user.getFirstname() + "is logged in and about to sign the Terms of Use");
+        logger.info(user.getFirstname() + "is logged in and just signed the Terms of Use");
 
-        XdatUserAuthService service1 = XDAT.getContextService().getBean(XdatUserAuthService.class);
-        UserAttributesService service2 = XDAT.getContextService().getBean(UserAttributesService.class);
+        UserAttributesService signService = XDAT.getContextService().getBean(UserAttributesService.class);
 
-        XdatUserAuth obj1 = new XdatUserAuth("Hans", "localdb");
-        UserAttributes obj2 = new UserAttributes("Hans", true);
+        UserAttributes userAttribute = signService.findByUserName(user.getUsername());
 
-        service1.create(obj1);
-        List<XdatUserAuth> result = service1.getUsersByName("Hans");
+        userAttribute.setAcceptedTerms(true);
 
-        service2.create(obj2);
-        //testservice.attachUserAttributes("Hans", false);
+        signService.updateUserAttributes(userAttribute);
 
-        data.setMessage("It works.");
-
+        data.setMessage("Preferences updated");
         data.setScreenTemplate("Index.vm");
+
     }
 }
