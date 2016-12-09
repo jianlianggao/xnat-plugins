@@ -12,13 +12,6 @@ public interface UserAttributesService extends BaseHibernateService<UserAttribut
 
     UserAttributes findByExampleUserName(String username);
 
-    String getStringAttributeForUser(final String user, String key);
+    UserAttributes findByProperty(String property, String value);
 
-    Boolean getBooleanAttributeForUser(final String user, Boolean key);
-
-    UserAttributes getAttributesForUsername (final String user);
-
-    void setAttributesForUsername(final String user, HashMap attributes);
-
-    String getTestString();
 }

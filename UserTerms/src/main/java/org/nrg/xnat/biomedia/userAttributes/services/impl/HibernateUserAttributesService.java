@@ -31,68 +31,36 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
         return data;
     }*/
 
-    @Transactional
     @Override
+    @Transactional
     public UserAttributes findByUserName(String username) {
         List<UserAttributes> user = _dao.findByProperty("userName", username);
-
-        //List<UserAttributes> user = _dao.findAllByExample(new UserAttributes(username), AbstractHibernateEntity.getExcludedProperties("what", "okay"));
         if (user == null || user.size() == 0) {
             return null;
         }
-
         return user.get(0);
     }
 
+    @Override
     @Transactional
     public UserAttributes findByExampleUserName(String username) {
         UserAttributes example = new UserAttributes(username);
-
-        String[] EXCLUSION_PROPERTIES_XDATUSERLOCK = AbstractHibernateEntity.getExcludedProperties("hasacceptedterms", "hasAcceptedTerms");
-
-        List<UserAttributes> user = _dao.findByExample(example, EXCLUSION_PROPERTIES_XDATUSERLOCK);
-
+        String[] EXCLUSION_PROPERTIES_USERNAME = AbstractHibernateEntity.getExcludedProperties("hasacceptedterms", "hasAcceptedTerms");
+        List<UserAttributes> user = _dao.findByExample(example, EXCLUSION_PROPERTIES_USERNAME);
         if (user == null || user.size() == 0) {
             return null;
         }
-
         return user.get(0);
     }
 
-    @Transactional
     @Override
-    public String getStringAttributeForUser(String user, String key) {
-        UserAttributes example = new UserAttributes(user);
-
-        //final Map<String, Object> attributes = new HashMap<>();
-        List<UserAttributes> attributes = _dao.findByExample(example, AbstractHibernateEntity.getExcludedProperties("verified", "failedLoginAttempts"));
-        if (attributes == null || attributes.size() == 0) { return null; }
-
-        return attributes.get(0).toString();
-    }
-
     @Transactional
-    @Override
-    public UserAttributes getAttributesForUsername(String user) {
-        return _dao.findAllByExample(new UserAttributes(user), AbstractHibernateEntity.getExcludedProperties("what", "okay")).get(0);
-    }
-
-    @Transactional
-    @Override
-    public Boolean getBooleanAttributeForUser(String user, Boolean key) {
-        return null;
-    }
-
-    @Transactional
-    @Override
-    public String getTestString() {
-        return "It does work!";
-    }
-
-    @Transactional
-    @Override
-    public void setAttributesForUsername(String User, HashMap attributes) {
-        //_dao.
+    public UserAttributes findByProperty(String property, String value) {
+        List<UserAttributes> user = _dao.findByProperty(property, value);
+        if (user == null || user.size() == 0) {
+            return null;
+        }
+        return user.get(0);
     }
 
 }
