@@ -1,7 +1,0 @@
-<!-- Sequence: 6 -->
-<!-- allowGuest: true -->
-
-<li class="yuimenuitem">
-    <a class="yuimenuitemlabel" href="$link.setAction("CheckTerms").addPathInfo('project',$project.getId())">Accept
-        User Terms</A>
-</li>
