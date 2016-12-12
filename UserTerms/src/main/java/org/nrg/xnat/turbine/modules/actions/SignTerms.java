@@ -5,6 +5,8 @@ import org.apache.turbine.util.RunData;
 import org.apache.velocity.context.Context;
 import org.nrg.xdat.XDAT;
 import org.nrg.xdat.entities.XdatUserAuth;
+import org.nrg.xdat.security.UserGroupI;
+import org.nrg.xdat.security.helpers.Groups;
 import org.nrg.xdat.services.XdatUserAuthService;
 import org.nrg.xdat.turbine.modules.actions.SecureAction;
 import org.nrg.xdat.turbine.utils.TurbineUtils;
@@ -30,13 +32,16 @@ public class SignTerms extends SecureAction {
         logger.info(user.getFirstname() + "is logged in and just signed the Terms of Use");
 
         UserAttributesService signService = XDAT.getContextService().getBean(UserAttributesService.class);
-
         UserAttributes userAttribute = signService.findByUserName(user.getUsername());
-
         userAttribute.setAcceptedTerms(true);
-
         signService.updateUserAttributes(userAttribute);
 
+        /*String p = ((String)org.nrg.xdat.turbine.utils.TurbineUtils.GetPassedParameter("project",data));
+        List<UserGroupI> groups = Groups.getAllGroups();
+        Groups.getUserGroupService().getGroup(p);
+        //Groups.addUserToGroup(Groups.getGroupByTagAndName(p, p))
+        Groups.removeUserFromGroup(user, user, "DataRel1Pub_collaborator", );
+*/
         data.setMessage("Preferences updated");
         data.setScreenTemplate("Index.vm");
 
