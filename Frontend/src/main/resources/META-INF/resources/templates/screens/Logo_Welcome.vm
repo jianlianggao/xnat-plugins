@@ -1,0 +1,1 @@
+<img class="welcome_img" src="$content.getURI("images/brain_cropped.jpg")" style="padding: 5px;">
