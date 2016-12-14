@@ -37,41 +37,41 @@ public class DownloadSessionsAction2 extends SecureAction {
     @SuppressWarnings({"ConstantConditions", "unchecked"})
     @Override
     public void doPerform(RunData data, Context context) throws Exception {
-        String [] session_ids=((String[])TurbineUtils.GetPassedObjects("sessions",data));
+        String[] session_ids = ((String[]) TurbineUtils.GetPassedObjects("sessions", data));
 
-        String [] requestScanTypes=((String[])TurbineUtils.GetPassedObjects("scan_type",data));
-        String [] scanFormats=((String[])TurbineUtils.GetPassedObjects("scan_format",data));
-        String [] recons=((String[])TurbineUtils.GetPassedObjects("recon",data));
-        String [] assessors=((String[])TurbineUtils.GetPassedObjects("assessors",data));
-        String [] resources=((String[])TurbineUtils.GetPassedObjects("resources",data));
+        String[] requestScanTypes = ((String[]) TurbineUtils.GetPassedObjects("scan_type", data));
+        String[] scanFormats = ((String[]) TurbineUtils.GetPassedObjects("scan_format", data));
+        String[] recons = ((String[]) TurbineUtils.GetPassedObjects("recon", data));
+        String[] assessors = ((String[]) TurbineUtils.GetPassedObjects("assessors", data));
+        String[] resources = ((String[]) TurbineUtils.GetPassedObjects("resources", data));
 
-		//BEGIN:IOWA customization: to allow project and subject included in path
-        boolean projectIncludedInPath = "true".equalsIgnoreCase((String)TurbineUtils.GetPassedParameter("projectIncludedInPath", data));
-        boolean subjectIncludedInPath = "true".equalsIgnoreCase((String)TurbineUtils.GetPassedParameter("subjectIncludedInPath",data));
+        //BEGIN:IOWA customization: to allow project and subject included in path
+        boolean projectIncludedInPath = "true".equalsIgnoreCase((String) TurbineUtils.GetPassedParameter("projectIncludedInPath", data));
+        boolean subjectIncludedInPath = "true".equalsIgnoreCase((String) TurbineUtils.GetPassedParameter("subjectIncludedInPath", data));
         boolean simplified = "true".equalsIgnoreCase((String) TurbineUtils.GetPassedParameter("simplified", data));
-        
+
         String extraParam = "";
-        if(projectIncludedInPath){
+        if (projectIncludedInPath) {
             extraParam += "&projectIncludedInPath=true";
         }
-        if(subjectIncludedInPath){
+        if (subjectIncludedInPath) {
             extraParam += "&subjectIncludedInPath=true";
         }
-        if(simplified){
+        if (simplified) {
             extraParam += "&structure=simplified";
         }
-		//END:
-        
+        //END:
+
         String server = TurbineUtils.GetFullServerPath();
-        if (!server.endsWith("/")){
-            server +="/";
+        if (!server.endsWith("/")) {
+            server += "/";
         }
-        
-        List<String> l= new ArrayList<>();
+
+        List<String> l = new ArrayList<>();
         CatCatalogBean cat = new CatCatalogBean();
 
         final UserI userDetails = XDAT.getUserDetails();
-        for(String session : session_ids){
+        for (String session : session_ids) {
             CatCatalogBean sessionCatalog = new CatCatalogBean();
             sessionCatalog.setId(session);
 
@@ -106,51 +106,51 @@ public class DownloadSessionsAction2 extends SecureAction {
                 }
             }
 
-            if (resources!=null && resources.length>0){
+            if (resources != null && resources.length > 0) {
                 final CatCatalogBean scansCatalog = new CatCatalogBean();
                 scansCatalog.setId("RESOURCES");
-                for(final String res : resources){
+                for (final String res : resources) {
                     final CatEntryBean entry = new CatEntryBean();
                     entry.setFormat("ZIP");
-                    String uri=server + "data/experiments/" + session + "/resources/" + URLEncoder.encode(res, "UTF-8") + "/files?format=zip" + extraParam;
+                    String uri = server + "data/experiments/" + session + "/resources/" + URLEncoder.encode(res, "UTF-8") + "/files?format=zip" + extraParam;
                     entry.setUri(uri);
                     l.add(uri);
                     scansCatalog.addEntries_entry(entry);
                 }
                 sessionCatalog.addSets_entryset(scansCatalog);
             }
-            
-            if (recons!=null && recons.length>0){
+
+            if (recons != null && recons.length > 0) {
                 CatCatalogBean scansCatalog = new CatCatalogBean();
                 scansCatalog.setId("RECONSTRUCTED");
-                for(String scanType : recons){
+                for (String scanType : recons) {
                     CatEntryBean entry = new CatEntryBean();
                     entry.setFormat("ZIP");
-                    String uri=server + "data/experiments/" + session + "/reconstructions/" + URLEncoder.encode(scanType, "UTF-8") + "/files?format=zip" + extraParam;
+                    String uri = server + "data/experiments/" + session + "/reconstructions/" + URLEncoder.encode(scanType, "UTF-8") + "/files?format=zip" + extraParam;
                     entry.setUri(uri);
                     l.add(uri);
                     scansCatalog.addEntries_entry(entry);
                 }
                 sessionCatalog.addSets_entryset(scansCatalog);
             }
-            
-            if (assessors!=null && assessors.length>0){
+
+            if (assessors != null && assessors.length > 0) {
                 CatCatalogBean scansCatalog = new CatCatalogBean();
                 scansCatalog.setId("ASSESSORS");
-                for(String scanType : assessors){
+                for (String scanType : assessors) {
                     CatEntryBean entry = new CatEntryBean();
                     entry.setFormat("ZIP");
-                    String uri=server + "data/experiments/" + session + "/assessors/" + URLEncoder.encode(scanType, "UTF-8") + "/files?format=zip" + extraParam;
+                    String uri = server + "data/experiments/" + session + "/assessors/" + URLEncoder.encode(scanType, "UTF-8") + "/files?format=zip" + extraParam;
                     entry.setUri(uri);
                     l.add(uri);
                     scansCatalog.addEntries_entry(entry);
                 }
                 sessionCatalog.addSets_entryset(scansCatalog);
             }
-            
-            cat.addSets_entryset(sessionCatalog);       
+
+            cat.addSets_entryset(sessionCatalog);
         }
-        
+
         String id = Calendar.getInstance().getTimeInMillis() + "";
         File f = Users.getUserCacheFile(userDetails, "catalogs", id + ".xml");
 
@@ -160,16 +160,22 @@ public class DownloadSessionsAction2 extends SecureAction {
         cat.toXML(fw, true);
         fw.flush();
         fw.close();
-        
+
         String catalogXML = server + "archive/catalogs/stored/" + id + ".xml";
-        if (TurbineUtils.GetPassedParameter("download_option",data).equals("applet")){
+        if (TurbineUtils.GetPassedParameter("download_option", data).equals("applet")) {
             context.put("catalogXML", catalogXML);
             context.put("sessions", l);
-            
             data.setScreenTemplate("DownloadApplet.vm");
-        }else{
+
+        } else if (TurbineUtils.GetPassedParameter("download_option", data).equals("direct")) {
+            String tarballPath = server + "tarballs2/test.zip";
+            data.setRedirectURI(tarballPath);
+            data.setMessage("Download started");
+            data.setScreenTemplate("Index.vm");
+
+        } else {
             data.setRedirectURI(catalogXML);
-        }     
+        }
     }
 
     private String getTypeClause(final String[] requestScanTypes) {
