@@ -1,0 +1,6 @@
+<!-- Sequence: 20 -->
+<!-- allowGuest: true -->
+
+<li class="yuimenuitem">
+    <a class="yuimenuitemlabel" href="$link.setAction("TorrentDownloadAction").addPathInfo('project',$project.getId())">Download Data Set (Torrent)</A>
+</li>
