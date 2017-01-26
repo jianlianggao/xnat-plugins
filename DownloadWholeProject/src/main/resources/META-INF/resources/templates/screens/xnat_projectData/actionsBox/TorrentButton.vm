@@ -2,5 +2,5 @@
 <!-- allowGuest: true -->
 
 <li class="yuimenuitem">
-    <a class="yuimenuitemlabel" href="$link.setAction("TorrentDownloadAction").addPathInfo('project',$project.getId())">Download Data Set (Torrent)</A>
+    <a class="yuimenuitemlabel" href="/tarballs/323a0048d87ca79b68f12a6350a57776b6a3b7fb.torrent">Download Data Set (Torrent)</A>
 </li>
