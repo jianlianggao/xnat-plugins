@@ -361,7 +361,7 @@
                     <tr>
                         <td></td>
                         <td style="font-size:11px;">
-                            Download of the compressed data via http. Roughly 200GB so be patient!
+                            Download only the compressed structural data set of the first subject via http. For testing purposes.
                     </tr>
                     <TR>
                         <TD>&nbsp;</TD>
@@ -373,7 +373,7 @@
                     <TR>
                         <TD></TD>
                         <TD style="font-size:11px;">
-                            You will be prompted to enter a local directory to copy the data to. Then, all of
+                            Here you can pick the images you want to download yourself. You will be prompted to enter a local directory to copy the data to. Then, all of
                             the requested imaging data will be directly downloaded via a java applet into that
                             directory.
                         </TD>
