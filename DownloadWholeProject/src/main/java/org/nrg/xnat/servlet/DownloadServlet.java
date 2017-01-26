@@ -12,7 +12,7 @@ import java.nio.file.Files;
 /**
  * Created by gmlenz on 14/12/16.
  */
-@WebServlet("/tarballs2/*")
+@WebServlet("/tarballs/*")
 public class DownloadServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{

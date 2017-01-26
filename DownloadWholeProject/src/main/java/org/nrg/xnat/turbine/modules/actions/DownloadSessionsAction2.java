@@ -168,7 +168,7 @@ public class DownloadSessionsAction2 extends SecureAction {
             data.setScreenTemplate("DownloadApplet.vm");
 
         } else if (TurbineUtils.GetPassedParameter("download_option", data).equals("direct")) {
-            String tarballPath = server + "tarballs2/test.zip";
+            String tarballPath = server + "tarballs/dhcp_rel_1.tar.gz";
             data.setRedirectURI(tarballPath);
             data.setMessage("Download started");
             data.setScreenTemplate("Index.vm");
