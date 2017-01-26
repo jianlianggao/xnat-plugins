@@ -97,10 +97,10 @@ select {  }
 /* Custom Fonts                                */
 /***********************************************/
 
-@font-face {
+/*@font-face {
     font-family: "Eau Sans Black";
     src: url("../../resources/fonts/dHCP_font/eau_sans_black.otf");
-}
+}*/
 
 /* xnat.css */
 /***********************************************/
@@ -1266,7 +1266,9 @@ body.xnat .chosen-container {
     font-size: 14px;
     vertical-align: middle;
     background: rgba(27, 91, 105, 0.48);
+    /*
     font-family: "Eau Sans Black";
+    */
 }
 
 /*@media screen and (min-width: 1000px) {*/
