@@ -42,6 +42,11 @@ h4 {
     line-height: 18px;
 }
 
+h5 {
+    font-size: 14px;
+    line-height: 22px;
+}
+
 p {
     font-size: 13px;
     line-height: 17px;
@@ -97,10 +102,10 @@ select {  }
 /* Custom Fonts                                */
 /***********************************************/
 
-/*@font-face {
+@font-face {
     font-family: "Eau Sans Black";
     src: url("../../resources/fonts/dHCP_font/eau_sans_black.otf");
-}*/
+}
 
 /* xnat.css */
 /***********************************************/
@@ -1260,15 +1265,17 @@ body.xnat .chosen-container {
     /*display: inline-block;*/
     /*margin: 0 0 3em;*/
     /*vertical-align: top;*/
+    horiz-align: left;
     width: 400px;
     float: left;
     margin-left: 20px;
-    font-size: 14px;
-    vertical-align: middle;
-    background: rgba(27, 91, 105, 0.48);
+    margin-right: 20px;
+    font-size: 16px;
+    vertical-align: top;
     /*
-    font-family: "Eau Sans Black";
+    background: rgba(27, 91, 105, 0.48);
     */
+    font-family: "Eau Sans Black";
 }
 
 /*@media screen and (min-width: 1000px) {*/
@@ -1282,6 +1289,8 @@ body.xnat .chosen-container {
     background-color: #d9def0;
     display: inline-block;
     line-height: 1.1;
+    float: left;
+    font-size: 16px;
     padding: 0;
     width: 400px;
     border-radius: 10px;
@@ -1290,7 +1299,7 @@ body.xnat .chosen-container {
 #login_box {
     float: left;
     margin-left: 20px;
-    margin-top: 100px;
+    margin-top: 20px;
 }
 
 #register_box {
@@ -1319,7 +1328,7 @@ body.xnat .chosen-container {
 }
 
 #login_box_container {
-    float: right;
+    float: left;
     margin-right: 20px;
 }
 
@@ -1348,7 +1357,7 @@ body.xnat .chosen-container {
 /*}*/
 
 #site_description {
-    font-size: 14px;
+    font-size: 16px;
     vertical-align: middle;
     background: #1b5b69;
 }
@@ -1465,12 +1474,14 @@ span.sep {
 
 #welcome_logo {
     display: inline-block;
+    float: right;
     max-width: 700px;
     max-height: 550px;
 }
 
 #welcome_logo img {
     display: block;
+    float: right;
     max-width: 700px;
     max-height: 550px;
 }
