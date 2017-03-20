@@ -33,7 +33,7 @@ public class SignTerms extends SecureAction {
 
         UserAttributesService signService = XDAT.getContextService().getBean(UserAttributesService.class);
         UserAttributes userAttribute = signService.findByUserName(user.getUsername());
-        userAttribute.setAcceptedTerms(true);
+        userAttribute.setAgreedTerms(true);
         signService.updateUserAttributes(userAttribute);
 
         /*String p = ((String)org.nrg.xdat.turbine.utils.TurbineUtils.GetPassedParameter("project",data));

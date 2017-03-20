@@ -52,7 +52,7 @@ public class XDATScreen_report_xnat_projectData extends SecureReport {
                 extendedUser = userService.create(new UserAttributes(username));
             }
 
-            if(extendedUser.hasAcceptedTerms()){
+            if(extendedUser.isAgreedTerms()){
                 context.put("hasAcceptedUserTerms", true);
             }
             else
