@@ -22,7 +22,7 @@ $page.setVlinkColor($ui.vlink)
 <div class="error">$data.message</div>
 #end
 <form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post"
-      action="$link.setAction("SignTerms")">
+      action="$link.setAction("SignTermsAction")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">

@@ -66,7 +66,7 @@
                     Terms and Conditions. Current user's status is: $hasAcceptedUserTerms
                 </DIV>
                 <DIV class="containerItem" style="white-space:normal;">
-                    &nbsp;&nbsp;&nbsp;&bull; <A href="$link.setAction("CheckTerms").addPathInfo('project',$project.getId())">Terms and Conditions.</A></DIV>
+                    &nbsp;&nbsp;&nbsp;&bull; <A href="$link.setAction("CheckTermsAction").addPathInfo('project',$project.getId())">Terms and Conditions.</A></DIV>
             </DIV>
         </DIV>
 
