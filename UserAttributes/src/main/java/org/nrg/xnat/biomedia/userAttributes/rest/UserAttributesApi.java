@@ -14,6 +14,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.nrg.framework.annotations.XapiRestController;
+import org.nrg.xdat.rest.AbstractXapiRestController;
+import org.nrg.xdat.security.services.RoleHolder;
+import org.nrg.xdat.security.services.UserManagementServiceI;
 import org.nrg.xnat.biomedia.userAttributes.entities.UserAttributes;
 import org.nrg.xnat.biomedia.userAttributes.preferences.UserAttributesPreferencesBean;
 import org.nrg.xnat.biomedia.userAttributes.services.UserAttributesService;
@@ -31,15 +34,17 @@ import java.util.List;
 @Api(description = "XNAT User attributes API")
 @XapiRestController
 @RequestMapping(value = "/userattributes")
-public class UserAttributesApi {
-    @Autowired
-    public void setUserAttributesService(final UserAttributesService userAttributesService) {
-        _userAttributesService = userAttributesService;
-    }
+public class UserAttributesApi extends AbstractXapiRestController{
+    private UserAttributesService _userAttributesService;
+    private UserAttributesPreferencesBean _preferences;
 
     @Autowired
-    final void setUserAttributesPreferencesBean(final UserAttributesPreferencesBean preferences) {
-        _preferences = preferences;
+    protected UserAttributesApi(UserManagementServiceI userManagementService, RoleHolder roleHolder,
+                                UserAttributesService attributesService, UserAttributesPreferencesBean preferencesBean) {
+        super(userManagementService, roleHolder);
+
+        _userAttributesService = attributesService;
+        _preferences = preferencesBean;
     }
 
     @ApiOperation(value = "Returns a list of all extended user attributes.",
@@ -124,6 +129,4 @@ public class UserAttributesApi {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    private UserAttributesService         _userAttributesService;
-    private UserAttributesPreferencesBean _preferences;
 }
