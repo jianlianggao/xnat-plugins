@@ -251,7 +251,7 @@ $page.setVlinkColor($ui.vlink)
 
 
         <tr>
-            <td align="center"><input type="button" ONCLICK="javascript:history.go(-1)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
+            <td align="center"><input type="button" ONCLICK="javascript:history.go(-2)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
                     type="submit" name="eventSubmit_doPerform" value="I accept"/>
             </td>
         </tr>

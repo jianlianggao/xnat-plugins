@@ -63,7 +63,7 @@
                     <FONT size="+1">Access Denied</FONT></DIV>
                 <DIV class="containerItem" style="white-space:normal;">
                     You haven't signed the User Terms yet. In order to view and download the project please sign the
-                    Terms and Conditions. Current user's status is: $hasAcceptedUserTerms
+                    Terms and Conditions by clicking following link below.
                 </DIV>
                 <DIV class="containerItem" style="white-space:normal;">
                     &nbsp;&nbsp;&nbsp;&bull; <A href="$link.setAction("CheckTermsAction").addPathInfo('project',$project.getId())">Terms and Conditions.</A></DIV>
