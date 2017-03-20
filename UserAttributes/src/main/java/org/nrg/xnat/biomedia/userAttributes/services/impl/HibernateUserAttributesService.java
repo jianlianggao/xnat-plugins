@@ -21,16 +21,6 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
     @Inject
     private UserAttributesRepository _dao;
 
-  /*  @Transactional
-    @Override
-    public UserAttributes attachUserAttributes(String user, Boolean terms) {
-        UserAttributes data = new UserAttributes(user);
-        data.setUser(user);
-        data.setHasAcceptedTerms(terms);
-        _dao.create(data);
-        return data;
-    }*/
-
     @Override
     @Transactional
     public UserAttributes findByUserName(String username) {
@@ -45,7 +35,7 @@ public class HibernateUserAttributesService extends AbstractHibernateEntityServi
     @Transactional
     public UserAttributes findByExampleUserName(String username) {
         UserAttributes example = new UserAttributes(username);
-        String[] EXCLUSION_PROPERTIES_USERNAME = AbstractHibernateEntity.getExcludedProperties("hasacceptedterms", "hasAcceptedTerms");
+        String[] EXCLUSION_PROPERTIES_USERNAME = AbstractHibernateEntity.getExcludedProperties("enabled");
         List<UserAttributes> user = _dao.findByExample(example, EXCLUSION_PROPERTIES_USERNAME);
         if (user == null || user.size() == 0) {
             return null;

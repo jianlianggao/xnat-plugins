@@ -22,7 +22,7 @@ $page.setVlinkColor($ui.vlink)
 <div class="error">$data.message</div>
 #end
 <form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post"
-      action="$link.setAction("SignTerms")">
+      action="$link.setAction("SignTermsAction")">
     <input type="hidden" name="project" value="$project.getId()"/>
     <input type="hidden" name="project" value="$!{project}">
     <input type="hidden" name="part_id" value="$!{part_id}">
@@ -251,7 +251,7 @@ $page.setVlinkColor($ui.vlink)
 
 
         <tr>
-            <td align="center"><input type="button" ONCLICK="javascript:history.go(-1)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
+            <td align="center"><input type="button" ONCLICK="javascript:history.go(-2)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
                     type="submit" name="eventSubmit_doPerform" value="I accept"/>
             </td>
         </tr>
