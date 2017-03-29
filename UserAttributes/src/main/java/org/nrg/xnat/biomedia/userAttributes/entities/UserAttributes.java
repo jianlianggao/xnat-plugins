@@ -1,7 +1,6 @@
 package org.nrg.xnat.biomedia.userAttributes.entities;
 
 import org.nrg.framework.orm.hibernate.AbstractHibernateEntity;
-
 import javax.persistence.Entity;
 
 @Entity
@@ -10,13 +9,13 @@ import javax.persistence.Entity;
 public class UserAttributes extends AbstractHibernateEntity {
 
     private String _userName;
-    private boolean _acceptedTerms;
+    private boolean _agreedTerms;
 
     public UserAttributes() {}
 
     public UserAttributes(String userName, boolean acceptedTerms) {
         _userName = userName;
-        _acceptedTerms = acceptedTerms;
+        _agreedTerms = acceptedTerms;
     }
     public UserAttributes(String userName) {
         this(userName, false);
@@ -26,13 +25,14 @@ public class UserAttributes extends AbstractHibernateEntity {
         return _userName;
     }
     public void setUserName(final String userName) {
-        _userName = userName;
+        this._userName = userName;
     }
 
-    public boolean isAcceptedTerms() {
-        return _acceptedTerms;
+    //for some reason this setter MUST start with 'is', rather than 'has'. Otherwise the property will not be created by Hibernate.
+    public boolean isAgreedTerms() {
+        return _agreedTerms;
     }
-    public void setAcceptedTerms(boolean _acceptedTerms) {
-        this._acceptedTerms = _acceptedTerms;
+    public void setAgreedTerms(final boolean acceptedTerms) {
+        this._agreedTerms = acceptedTerms;
     }
 }

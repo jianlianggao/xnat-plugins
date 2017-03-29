@@ -1,11 +1,42 @@
-<form name="form1" method="post" action="$link.setAction("RequestAccess")">
+#* @vtlvariable name="siteConfig" type="org.nrg.xdat.preferences.SiteConfigPreferences" *#
+
+$page.setTitle("UserAttributes")
+$page.setLinkColor($ui.alink)
+$page.setVlinkColor($ui.vlink)
+<script type="text/javascript">
+    window.currentID = "$!om.getId()";
+        #if($om.getProject())
+            #if($om.getProject().equals(""))
+            window.currentProject = "$!project";
+            #else
+            window.currentProject = "$!om.getProject()";
+            #end
+        #else
+        window.currentProject = "$!project";
+        #end
+
+    window.currentSubject = "$!om.getSubjectId()";
+    window.currentLabel = "$!om.getLabel()";
+</script>
+#if ($data.message)
+<div class="error">$data.message</div>
+#end
+<form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post"
+      action="$link.setAction("SignTermsAction")">
     <input type="hidden" name="project" value="$project.getId()"/>
-    <input type="hidden" name="access_level" value="collaborator"/>
-    <input type="hidden" name="comments" value=""/>
+    <input type="hidden" name="project" value="$!{project}">
+    <input type="hidden" name="part_id" value="$!{part_id}">
+
+    <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
+
+    #if($vr)
+        <div class="error">Invalid parameters:<BR>$vr.toHTML()</div>
+        <HR>
+    #end
 
     <table>
         <tr>
-            <td><h3>dHCP data set: Terms of Use</h3>
+            <td><h3>dHCP $!{project.getName()} data set: Terms of Use</h3>
             </td>
         </tr>
 
@@ -73,8 +104,7 @@
                     </li>
                     <li>I understand that dHCP data are experimental and may contain errors (including errors and/or
                         omissions in
-                        data processing), and I accept that they are provided on an &quot;as is&quot; basis and without
-                        any
+                        data processing), and I accept that they are provided on an &quot;as is&quot; basis and without any
                         warranty (a) of
                         accuracy, completeness, or fitness for any purpose or (b) that their use will not infringe the
                         rights of any third
@@ -221,13 +251,24 @@
 
 
         <tr>
-            <td align="center"><input type="button" ONCLICK="javascript:history.go(-1)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
-                    type="submit" name="eventSubmit_doPerform" value="Accept and submit request"/>
+            <td align="center"><input type="button" ONCLICK="javascript:history.go(-2)" name="reset" value="Cancel"/>&nbsp;&nbsp;&nbsp;<input
+                    type="submit" name="eventSubmit_doPerform" value="I accept"/>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
             </td>
         </tr>
 
-        <td>&nbsp;
-        </td>
+        <tr>
+            <td>
+                #xdatEditProps($item $edit_screen)
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;
+            </td>
+        </tr>
 
     </table>
 
