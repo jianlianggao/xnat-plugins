@@ -23,8 +23,7 @@ $page.setVlinkColor($ui.vlink)
 #end
 <form ID="userAttributesAcceptanceForm" name="userAttributesAcceptanceForm" method="post"
       action="$link.setAction("SignTermsAction")">
-    <input type="hidden" name="project" value="$project.getId()"/>
-    <input type="hidden" name="project" value="$!{project}">
+    <INPUT type="hidden" name="project" value="$!{project}"/>
     <input type="hidden" name="part_id" value="$!{part_id}">
 
     <input type="hidden" name="$om.getXSIType()/ID" id="$om.getXSIType()/ID" value="$!om.getId()"/>
@@ -36,7 +35,7 @@ $page.setVlinkColor($ui.vlink)
 
     <table>
         <tr>
-            <td><h3>dHCP $!{project.getName()} data set: Terms of Use</h3>
+            <td><h3>dHCP $!{project} data set: Terms of Use</h3>
             </td>
         </tr>
 
