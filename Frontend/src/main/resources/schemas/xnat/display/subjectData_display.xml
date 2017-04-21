@@ -48,7 +48,7 @@
 		<DisplayFieldElement name="Field1" schema-element="xnat:demographicData.gender"/>
 		<Content type="sql">CASE @Field1 WHEN 'male' THEN 'M' WHEN 'female' THEN 'F' ELSE 'U' END</Content>
 	</DisplayField>
-	<DisplayField id="GEST_AGE" header="Gestational age" visible="true" searchable="true">
+	<DisplayField id="GEST_AGE" header="Gestational age in weeks" visible="true" searchable="true">
 		<DisplayFieldElement name="Field1" schema-element="xnat:demographicData.gestational_age"/>
 	</DisplayField>
 	<DisplayField id="HANDEDNESS" header="Hand" visible="true">
@@ -72,7 +72,7 @@
 	<DisplayField id="MR_COUNT" header="MR Count" visible="true" data-type="integer">
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData" xdat-type="COUNT"/>
 	</DisplayField>
-	<DisplayField id="AGE_AT_SCAN" header="Age at scan" visible="true" searchable="true">
+	<DisplayField id="AGE_AT_SCAN" header="Age at scan in days" visible="true" searchable="true">
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.age"/>
 	</DisplayField>
 	<DisplayField id="INVEST_CSV" header="PI" visible="true" searchable="true">
