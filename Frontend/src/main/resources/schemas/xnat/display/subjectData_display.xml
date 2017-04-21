@@ -72,6 +72,9 @@
 	<DisplayField id="MR_COUNT" header="MR Count" visible="true" data-type="integer">
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData" xdat-type="COUNT"/>
 	</DisplayField>
+	<DisplayField id="AGE_AT_SCAN" header="Age at scan" visible="true" searchable="true">
+		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.age"/>
+	</DisplayField>
 	<DisplayField id="INVEST_CSV" header="PI" visible="true" searchable="true">
 		<DisplayFieldElement name="Field1" schema-element="xnat:subjectData.investigator.lastname"/>
 	</DisplayField>
