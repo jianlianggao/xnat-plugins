@@ -28,7 +28,8 @@ public class SignTermsAction extends SecureAction {
         userAttribute.setAgreedTerms(true);
         signService.updateUserAttributes(userAttribute);
 
-        final XnatProjectdata prID = XnatProjectdata.getProjectByIDorAlias("DataRel1", user, false);
+        String name = TurbineUtils.GetPassedParameter("project", data).toString();
+        final XnatProjectdata prID = XnatProjectdata.getProjectByIDorAlias(name, user, false);
 
         context.put("user", XDAT.getUserDetails());
         context.put("server", TurbineUtils.GetFullServerPath());
