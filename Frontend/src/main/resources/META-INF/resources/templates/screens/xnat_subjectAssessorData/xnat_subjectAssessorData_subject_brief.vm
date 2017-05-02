@@ -29,7 +29,7 @@
     </tr>
     #end
 <tr>
-    <th align="left">Age:</th>
+    <th align="left">Gestational age at scan (in weeks):</th>
     <td>$!om.getSubjectAge()</td>
 </tr>
 #else
