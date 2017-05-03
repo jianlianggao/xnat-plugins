@@ -174,7 +174,7 @@
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.project"/>
 	<description>Primary Project for this session</description>
 	</DisplayField>
-	<DisplayField id="MR_PROJECT_IDENTIFIER" header="MR ID" visible="true" searchable="false" data-type="string" xsi:type="SubQueryField">
+	<DisplayField id="MR_PROJECT_IDENTIFIER" header="MR ID TEST" visible="true" searchable="false" data-type="string" xsi:type="SubQueryField">
 		<Content type="sql">mr_project_id</Content>
 		<HTML-Link>
 			<SecureLink elementName="xnat:mrSessionData">
@@ -233,7 +233,7 @@
 	<DiplayField id="GEST_AGE" header="Gestational age at birth in weeks" visible="true" searchable="true">
 		<DisplayFieldElement name="Field1" schema-element="xnat:demographicData.gestational_age"/>
 	</DisplayField>
-	<DisplayVersion versionName="listing" default-order-by="DATE" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
+	<DisplayVersion versionName="listing" default-order-by="SUBJECT_LABEL" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="LABEL"/>
 		<DisplayFieldRef id="PROJECT"/>
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
@@ -243,7 +243,7 @@
 		<DisplayFieldRef id="SCANNER"/>
 		<DisplayFieldRef id="MR_SCAN_COUNT_AGG"/>
 	</DisplayVersion>
-	<DisplayVersion versionName="listing_csv" default-order-by="DATE" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
+	<DisplayVersion versionName="listing_csv" default-order-by="SUBJECT_LABEL" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="LABEL"/>
 		<DisplayFieldRef id="PROJECT"/>
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
@@ -253,14 +253,14 @@
 		<DisplayFieldRef id="SCANNER"/>
 		<DisplayFieldRef id="MR_SCAN_COUNT_AGG"/>
 	</DisplayVersion>
-	<DisplayVersion versionName="project_bundle" default-order-by="DATE" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
+	<DisplayVersion versionName="project_bundle" default-order-by="MR_PROJECT_IDENTIFIER" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="MR_PROJECT_IDENTIFIER"/>
 		<DisplayFieldRef id="SUB_PROJECT_IDENTIFIER" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="GEST_AGE"/>
 		<DisplayFieldRef id="SCANNER"/>
 		<DisplayFieldRef id="MR_SCAN_COUNT_AGG"/>
 	</DisplayVersion>
-	<DisplayVersion versionName="root" default-order-by="DATE" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
+	<DisplayVersion versionName="root" default-order-by="SUBJECT_LABEL" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="LABEL"/>
 		<DisplayFieldRef id="PROJECT"/>
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
@@ -293,16 +293,14 @@
 	<DisplayVersion versionName="core" default-order-by="SESSION" brief-description="Mr Session" dark-color="dedede" light-color="ffffff">
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="LABEL"/>
-		<DisplayFieldRef id="DATE"/>
 		<DisplayFieldRef id="GENDER_TEXT" element_name="xnat:subjectData"/>
-		<DisplayFieldRef id="AGE"/>
+		<DisplayFieldRef id="GEST_AGE"/>
 	</DisplayVersion>
 	<DisplayVersion versionName="core_csv" default-order-by="EXPT_DATE">
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="LABEL"/>
-		<DisplayFieldRef id="DATE"/>
 		<DisplayFieldRef id="GENDER_TEXT" element_name="xnat:subjectData"/>
-		<DisplayFieldRef id="AGE"/>
+		<DisplayFieldRef id="GEST_AGE"/>
 	</DisplayVersion>
 	<DisplayVersion versionName="meta_data" default-order-by="SES" brief-description="Mr Session" dark-color="99FF99" light-color="CCFFCC">
 		<DisplayFieldRef id="RPT"/>
