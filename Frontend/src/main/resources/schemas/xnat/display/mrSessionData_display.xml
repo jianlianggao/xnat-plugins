@@ -126,6 +126,9 @@
 	<DisplayField id="STABILIZATION_CSV" header="Stabilization" visible="true" searchable="true" data-type="string">
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.stabilization"/>
 	</DisplayField>
+	<DisplayField id="GEST_AGE" header="Gestational age at birth in weeks" visible="true" searchable="true">
+		<DisplayFieldElement name="Field1" schema-element="xnat:demographicData.gestational_age"/>
+	</DisplayField>
 	<DisplayField id="GEN_AGE" header="Age" visible="true" searchable="true" data-type="float">
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.date"/>
 		<DisplayFieldElement name="Field2" schema-element="xnat:demographicData.dob"/>
@@ -253,6 +256,7 @@
 	<DisplayVersion versionName="project_bundle" default-order-by="SUB_PROJECT_IDENTIFIER" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="MR_PROJECT_IDENTIFIER"/>
 		<DisplayFieldRef id="SUB_PROJECT_IDENTIFIER" element_name="xnat:subjectData"/>
+		<DisplayFieldRef id="GEST_AGE"/>
 		<DisplayFieldRef id="SCANNER"/>
 		<DisplayFieldRef id="MR_SCAN_COUNT_AGG"/>
 	</DisplayVersion>
