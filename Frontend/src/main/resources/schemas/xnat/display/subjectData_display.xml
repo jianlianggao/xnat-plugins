@@ -167,8 +167,7 @@
 	<DisplayVersion versionName="listing" default-order-by="SUBJECT_ID" brief-description="Subject Data" dark-color="DEDEDE" light-color="FFFFFF">
 		<DisplayFieldRef id="SUBJECT_LABEL"/>
 		<DisplayFieldRef id="GENDER"/>
-		<DisplayFieldRef id="HANDEDNESS"/>
-		<DisplayFieldRef id="DOB"/>
+		<DisplayFieldRef id="GEST_AGE"/>
 		<DisplayFieldRef id="EDUC"/>
 		<DisplayFieldRef id="SES"/>
 		<DisplayFieldRef id="MR_COUNT"/>
@@ -176,8 +175,7 @@
 	<DisplayVersion versionName="brief" default-order-by="SUBJECT_ID" brief-description="Subject Data" dark-color="DEDEDE" light-color="FFFFFF">
 		<DisplayFieldRef id="SUBJECT_LABEL"/>
 		<DisplayFieldRef id="GENDER"/>
-		<DisplayFieldRef id="HANDEDNESS"/>
-		<DisplayFieldRef id="DOB"/>
+		<DisplayFieldRef id="GEST_AGE"/>
 		<DisplayFieldRef id="EDUC"/>
 		<DisplayFieldRef id="SES"/>
 	</DisplayVersion>
