@@ -18,7 +18,6 @@
 	</Arc-Definition>
 	<Arc name="PARTICIPANT_EXPERIMENT">
 		<CommonField id="PART_ID" local-field="SUBJECT_ID"/>
-		<CommonField id="DATE" local-field="DATE"/>
 		<CommonField id="EXPT_ID" local-field="SESSION_ID"/>
 	</Arc>
 	<DisplayField id="SESSION_ID" header="Session" visible="true" searchable="true" data-type="string">
@@ -180,7 +179,7 @@
 		<DisplayFieldElement name="Field1" schema-element="xnat:mrSessionData.project"/>
 	<description>Primary Project for this session</description>
 	</DisplayField>
-	<DisplayField id="MR_PROJECT_IDENTIFIER" header="MR ID TEST" visible="true" searchable="false" data-type="string" xsi:type="SubQueryField">
+	<DisplayField id="MR_PROJECT_IDENTIFIER" header="MR ID" visible="true" searchable="false" data-type="string" xsi:type="SubQueryField">
 		<Content type="sql">mr_project_id</Content>
 		<HTML-Link>
 			<SecureLink elementName="xnat:mrSessionData">
@@ -262,10 +261,9 @@
 		<DisplayFieldRef id="SCANNER"/>
 		<DisplayFieldRef id="MR_SCAN_COUNT_AGG"/>
 	</DisplayVersion>
-	<DisplayVersion versionName="root" default-order-by="DATE" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
+	<DisplayVersion versionName="root" default-order-by="SUBJECT_LABEL" dark-color="DEDEDE" light-color="FFFFFF" default-sort-order="DESC">
 		<DisplayFieldRef id="LABEL"/>
 		<DisplayFieldRef id="PROJECT"/>
-		<DisplayFieldRef id="DATE"/>
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="GENDER_TEXT" element_name="xnat:subjectData"/>
 	</DisplayVersion>
@@ -295,14 +293,12 @@
 	<DisplayVersion versionName="core" default-order-by="SESSION" brief-description="Mr Session" dark-color="dedede" light-color="ffffff">
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="LABEL"/>
-		<DisplayFieldRef id="DATE"/>
 		<DisplayFieldRef id="GENDER_TEXT" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="AGE"/>
 	</DisplayVersion>
 	<DisplayVersion versionName="core_csv" default-order-by="EXPT_DATE">
 		<DisplayFieldRef id="SUBJECT_LABEL" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="LABEL"/>
-		<DisplayFieldRef id="DATE"/>
 		<DisplayFieldRef id="GENDER_TEXT" element_name="xnat:subjectData"/>
 		<DisplayFieldRef id="AGE"/>
 	</DisplayVersion>
