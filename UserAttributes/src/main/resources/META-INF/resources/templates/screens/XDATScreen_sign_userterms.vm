@@ -37,6 +37,13 @@ $page.setVlinkColor($ui.vlink)
         <tr>
             <td><h3>dHCP $!{project} data set: Terms of Use</h3>
             </td>
+
+        </tr>
+        <tr>
+            <td>
+                You can download a pdf version of the user terms <a href="/downloads/files/dHCPUserTerms.pdf"
+                                                                    target="_blank">here</a>.
+            </td>
         </tr>
 
         <tr>
@@ -56,6 +63,7 @@ $page.setVlinkColor($ui.vlink)
                         margin-top: 0;
                     }
                 </style>
+
                 <p>
                     The Consortium of King&#39;s College London, Imperial College London, and University of Oxford
                     (KCL-ICL-OX
@@ -103,7 +111,8 @@ $page.setVlinkColor($ui.vlink)
                     </li>
                     <li>I understand that dHCP data are experimental and may contain errors (including errors and/or
                         omissions in
-                        data processing), and I accept that they are provided on an &quot;as is&quot; basis and without any
+                        data processing), and I accept that they are provided on an &quot;as is&quot; basis and without
+                        any
                         warranty (a) of
                         accuracy, completeness, or fitness for any purpose or (b) that their use will not infringe the
                         rights of any third
