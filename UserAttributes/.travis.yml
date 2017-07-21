@@ -1,0 +1,8 @@
+language: java
+deploy:
+  provider: releases
+  api_key: "6ErUWZAa3JEZPehsxV1i"
+  file: "README.md"
+  skip_cleanup: true
+  on:
+    tags: true
