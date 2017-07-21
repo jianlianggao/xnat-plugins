@@ -41,7 +41,7 @@ $page.setVlinkColor($ui.vlink)
         </tr>
         <tr>
             <td>
-                You can download a pdf version of the user terms <a href="/downloads/files/dHCPUserTerms.pdf"
+                You can download a pdf version of the user terms <a href="/downloads/documentation/dHCPUserTerms.pdf"
                                                                     target="_blank">here</a>.
             </td>
         </tr>
