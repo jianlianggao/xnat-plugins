@@ -13,5 +13,6 @@ deploy:
   api_key: "6ErUWZAa3JEZPehsxV1i"
   file: "README.md"
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true
