@@ -1,4 +1,13 @@
 language: java
+
+script: 
+- cd UserAttributes
+- ./gradlew build
+
+before_deploy:
+- cd UserAttributes
+- ./gradlew clean jar
+
 deploy:
   provider: releases
   api_key: "6ErUWZAa3JEZPehsxV1i"
