@@ -1,11 +1,11 @@
 language: java
 
 script: 
-- cd UserAttributes
+- cd $TRAVIS_BUILD_DIR/UserAttributes
 - ./gradlew build
 
 before_deploy:
-- cd UserAttributes
+- cd $TRAVIS_BUILD_DIR/UserAttributes
 - ./gradlew clean jar
 
 deploy:
