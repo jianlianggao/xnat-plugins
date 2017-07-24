@@ -21,4 +21,5 @@ deploy:
     - $TRAVIS_BUILD_DIR/DownloadWholeProject/build/libs/DownloadWholeProject-plugin-*
     - $TRAVIS_BUILD_DIR/UserAttributes/build/libs/UserAttributes-plugin-*
   on:
-    branch: travis-artifacts
+    branch: master
+    tags: true 
