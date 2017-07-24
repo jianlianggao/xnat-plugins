@@ -1,6 +1,6 @@
 language: java
 
-script: 
+script:
 - cd $TRAVIS_BUILD_DIR/UserAttributes
 - ./gradlew build
 
@@ -10,9 +10,10 @@ before_deploy:
 
 deploy:
   provider: releases
-  api_key: "6ErUWZAa3JEZPehsxV1i"
-  file: "README.md"
-  skip_cleanup: true
   overwrite: true
+  api_key:
+    secure: 5YvRaR/Q+q/B5t9XKBsw5LNlC/Xkx/PEqZnFcKJbI284pu0x3hh+B9g7pH0bPaqT3BVjc29IpMwWOWvwtsGlFJXuJIIDea6AqFJ8MkU1dEV4LTUQC6ls8lwCqWV9HoajjYGioWxL8UP3dQ7CJ5BC4NQaP3KeUIV9D7Mzq2dMvKuioIk5CU8bvan9oghN9eHb7Huu90BFwJ71UgzRRSA9N6o2tzlGqA0Idm4nOIJ82/cASMVAO0m31Cr2rkbFhuzZxhhLwYsFTdvUkFEXkMmPMsaW6tltBnUIFoaFN1SG5GpzGKphTWOlw602dJb4kTYdxpkGKTittjvWSe4nkACq8gSf+GvQFYrkBFNdq9zpPtVN5o+vIx20ivTk+ip2gTja7W6jHOiMddcam30lXi5VJvWBKBa4KqjQXTroIlyt7MU0y1bfRjkE2e53FG46rRrvdFmLBYc4UEfpG84ZY/9Fo2gaJ0O2+YA9QlbRK3S8usIyDVg6WMkZYvjXVz5yZTGGhgHJMLeh47q3ztcXEyyl5vaLL8/gvphcGfTA8AKe/zZZU6HCfnaSANVCSWrkI54ZD2CODaGidUfHUJ9Oe98FjNjUF5ucU9LZmULunUgf73WhuIkzUhi6w6Yh25QTTUXbEfrdx8YNx1wJcDDKm/RuEkMNefQa2Nmx9UKsmsTL5u8=
+  file: README.md
   on:
-    tags: true
+    repo: BioMedIA/xnat-plugins
+    branch: travis-artifacts
