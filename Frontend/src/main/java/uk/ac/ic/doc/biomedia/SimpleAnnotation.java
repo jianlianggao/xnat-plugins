@@ -7,7 +7,7 @@
  * Released under the Simplified BSD.
  */
 
-package org.nrg.xnat.biomedia.plugin;
+package uk.ac.ic.doc.biomedia;
 
 public @interface SimpleAnnotation {
     int value() default 0;

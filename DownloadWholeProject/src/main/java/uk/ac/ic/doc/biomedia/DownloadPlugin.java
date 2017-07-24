@@ -16,7 +16,7 @@ import org.nrg.framework.annotations.XnatPlugin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
-@XnatPlugin(value = "downloadPlugin", name = "Adds download option to pull tarball of data via http")
+@XnatPlugin(value = "downloadPlugin", name = "Adds download options to pull tarballs or torrents")
 public class DownloadPlugin {
     @Bean
     public String workshopPluginMessage() {
