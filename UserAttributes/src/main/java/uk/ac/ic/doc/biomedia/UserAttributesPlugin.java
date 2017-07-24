@@ -1,4 +1,4 @@
-package org.nrg.xnat.biomedia.plugin;
+package uk.ac.ic.doc.biomedia;
 
 import org.nrg.framework.annotations.XnatDataModel;
 import org.nrg.framework.annotations.XnatPlugin;

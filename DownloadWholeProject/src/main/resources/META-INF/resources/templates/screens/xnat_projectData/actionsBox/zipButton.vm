@@ -1,0 +1,6 @@
+<!-- Sequence: 15 -->
+<!-- allowGuest: true -->
+
+<li class="yuimenuitem">
+    <a class="yuimenuitemlabel" href="/downloads/${project.name}/${project.name}.tar.gz" target="_blank">Download Data Set (.tar.gz)</A>
+</li>

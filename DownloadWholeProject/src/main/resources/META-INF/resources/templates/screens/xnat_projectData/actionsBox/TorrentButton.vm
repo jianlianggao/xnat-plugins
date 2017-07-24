@@ -1,6 +1,6 @@
-<!-- Sequence: 20 -->
+<!-- Sequence: 13 -->
 <!-- allowGuest: true -->
 
 <li class="yuimenuitem">
-    <a class="yuimenuitemlabel" href="/downloads/torrents/86b13be771365f231dd30b315953b7c62705d7ed.torrent">Download Data Set (Torrent)</A>
+    <a class="yuimenuitemlabel" href="/downloads/${project.name}/${project.name}.torrent">Download Data Set (.torrent)</A>
 </li>

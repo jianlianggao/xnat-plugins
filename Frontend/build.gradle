@@ -1,4 +1,4 @@
-def pluginVersion = '1.1'
+def pluginVersion = '1.3'
 
 group 'org.nrg.xnat.biomedia'
 version pluginVersion
