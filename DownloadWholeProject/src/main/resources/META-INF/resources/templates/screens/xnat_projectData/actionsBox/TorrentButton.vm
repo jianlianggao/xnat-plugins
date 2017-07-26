@@ -2,5 +2,5 @@
 <!-- allowGuest: true -->
 
 <li class="yuimenuitem">
-    <a class="yuimenuitemlabel" href="/downloads/${project.name}/${project.name}.torrent">Download Data Set (.torrent)</A>
+    <a class="yuimenuitemlabel" href="/downloads/${project.id}/${project.id}.torrent">Download Data Set (.torrent)</A>
 </li>
